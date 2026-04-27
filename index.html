@@ -417,6 +417,92 @@
   .tasks-col.attente li::before { content: "⋯ "; color: var(--acento); font-weight: 700; }
   .tasks-col.todo li::before { content: "○ "; color: var(--rouge); font-weight: 700; }
 
+  /* Variantes Cusco */
+  .variantes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .variante {
+    background: white;
+    border-radius: 10px;
+    padding: 1.8rem 1.5rem;
+    box-shadow: 0 1px 3px rgba(62,39,35,0.08);
+    border-top: 5px solid;
+    display: flex;
+    flex-direction: column;
+  }
+  .variante.a { border-color: var(--terra); }
+  .variante.b { border-color: var(--azul); }
+  .variante .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .variante.a .label { color: var(--terra); }
+  .variante.b .label { color: var(--azul); }
+  .variante h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  .variante .resume {
+    color: var(--texto-soft);
+    font-style: italic;
+    margin-bottom: 1.2rem;
+  }
+  .variante .pros, .variante .cons {
+    list-style: none;
+    margin: 0.8rem 0;
+  }
+  .variante .pros li, .variante .cons li {
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    position: relative;
+    font-size: 0.93rem;
+  }
+  .variante .pros li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--vert);
+    font-weight: 700;
+  }
+  .variante .cons li::before {
+    content: "−";
+    position: absolute;
+    left: 0;
+    color: var(--rouge);
+    font-weight: 700;
+  }
+  .variante h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--texto-soft);
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+  }
+  .foules-encart {
+    background: linear-gradient(135deg, #FFF8EE 0%, #FCEDD9 100%);
+    border-left: 4px solid var(--acento);
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    margin-top: 1rem;
+  }
+  .foules-encart h4 {
+    color: var(--terra-dark);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .foules-encart p { font-size: 0.92rem; color: var(--texto-soft); margin-bottom: 0.4rem; }
+
   /* Footer */
   footer {
     background: var(--azul-dark);
@@ -456,6 +542,7 @@
   <ul>
     <li><a href="#a-trancher">À trancher</a></li>
     <li><a href="#apercu">Aperçu</a></li>
+    <li><a href="#variantes-mp">Machu Picchu ?</a></li>
     <li><a href="#altitudes">Altitudes</a></li>
     <li><a href="#jour-par-jour">Jour par jour</a></li>
     <li><a href="#hotels">Hôtels</a></li>
@@ -482,7 +569,7 @@
 
   <div class="question">
     <strong>1. Machu Picchu — oui ou non ?</strong>
-    <p>Deux variantes pour Cusco : <em>avec Machu Picchu version light</em> (lever 5h30, créneau visite 8h) ou <em>sans Machu Picchu</em>, avec Vallée Sacrée approfondie (Maras, Moray, Salinas + Cusco profonde, aucun lever tôt).</p>
+    <p>Deux variantes pour Cusco. Détail complet juste en dessous → <a href="#variantes-mp">voir les deux options</a>.</p>
   </div>
 
   <div class="question">
@@ -506,6 +593,83 @@
     <li><span class="lieu">San Pedro de Atacama</span><span class="dates">18-20 septembre</span></li>
     <li><span class="lieu">Arica</span><span class="dates">21-24 septembre</span></li>
   </ol>
+</section>
+
+<section id="variantes-mp">
+  <h2>Machu Picchu — les deux variantes</h2>
+  <p class="section-sub">Le seul vrai choix qui te revient. Les deux options tiennent dans les mêmes 4 jours à Cusco / Vallée Sacrée, juste avec un contenu différent.</p>
+
+  <div class="variantes">
+    <article class="variante a">
+      <div class="label">Variante A</div>
+      <h3>Avec Machu Picchu (light)</h3>
+      <p class="resume">Une journée intense pour voir l'icône inca, en mode "rentre-sors" depuis Ollantaytambo (pas de nuit à Aguas Calientes).</p>
+
+      <h4>Comment ça se passe</h4>
+      <ul class="pros" style="margin-top: 0.3rem;">
+        <li>Lever 5h30 à Ollantaytambo</li>
+        <li>Train Ollantaytambo → Aguas Calientes 6h10</li>
+        <li>Bus Aguas Calientes → Machu Picchu, entrée Circuit 2-A "Clásico" sur le créneau 8h-9h</li>
+        <li>Visite environ 4h, retour Aguas Calientes</li>
+        <li>Train retour Ollantaytambo, puis Cusco le soir</li>
+      </ul>
+
+      <h4>Pour</h4>
+      <ul class="pros">
+        <li>Voir Machu Picchu, l'icône absolue</li>
+        <li>Créneau matin : on est avant la grosse foule (voir encart ci-dessous)</li>
+        <li>Tient dans les 4 jours sans rallonger le voyage</li>
+      </ul>
+
+      <h4>Contre</h4>
+      <ul class="cons">
+        <li>Lever 5h30, journée d'environ 12h sur les pieds</li>
+        <li>Logistique : train aller-retour, bus, foule au retour quand même</li>
+        <li>Coût additionnel pour les billets et le train</li>
+      </ul>
+
+      <div class="foules-encart">
+        <h4>Pourquoi le créneau 8h-9h évite la foule</h4>
+        <p>5 600 visiteurs maximum autorisés par jour, étalés par tranches horaires.</p>
+        <p>La majorité arrive par les bus depuis Cusco qui se garent à Aguas Calientes vers 9h30-10h30, et entrent au Machu Picchu sur les créneaux 10h, 11h et 12h. C'est le pic des foules.</p>
+        <p>En entrant sur le créneau 8h-9h depuis Ollantaytambo, on est dans la première vague — les ruines sont nettement plus calmes, la lumière est belle, et au moment où le rush arrive (10h), on a déjà bien avancé la visite.</p>
+      </div>
+    </article>
+
+    <article class="variante b">
+      <div class="label">Variante B</div>
+      <h3>Sans Machu Picchu (Vallée Sacrée approfondie)</h3>
+      <p class="resume">Pas de lever tôt, pas de logistique de train, mais on voit beaucoup plus de la culture inca au calme.</p>
+
+      <h4>Comment ça se passe</h4>
+      <ul class="pros" style="margin-top: 0.3rem;">
+        <li>Jour 6 : Pisac le matin, Maras + Moray + Salinas l'après-midi (chauffeur privé)</li>
+        <li>Jour 7 : Ollantaytambo le matin (forteresse + village inca préservé), retour Cusco l'après-midi, Sacsayhuamán et San Blas en fin de journée</li>
+        <li>Réveil libre, journées équilibrées</li>
+      </ul>
+
+      <h4>Pour</h4>
+      <ul class="pros">
+        <li>Aucun lever tôt</li>
+        <li>4 sites incas majeurs au lieu d'un seul (Pisac, Moray, Maras, Ollantaytambo)</li>
+        <li>Cusco profonde (Sacsayhuamán souvent zappé alors qu'il vaut le détour)</li>
+        <li>Économie côté budget (pas de train, pas d'entrée Machu Picchu)</li>
+        <li>Moins de logistique à réserver</li>
+      </ul>
+
+      <h4>Contre</h4>
+      <ul class="cons">
+        <li>On ne voit pas Machu Picchu (l'icône absolue du Pérou)</li>
+        <li>Possible regret plus tard ("on était si proche...")</li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="foules-encart" style="background: var(--crema); border-left-color: var(--azul);">
+    <h4 style="color: var(--azul-dark);">À quoi se fier pour décider</h4>
+    <p>La Variante A est cohérente si tu te sens en forme pour un lever tôt et une journée plus dense. La Variante B est cohérente si tu préfères un rythme constant doux et plus de temps pour l'immersion culturelle.</p>
+    <p>Les deux sont belles. Pas de "bon choix" objectif — c'est une question de rythme.</p>
+  </div>
 </section>
 
 <section id="altitudes">
