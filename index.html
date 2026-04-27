@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notre voyage en Amérique du Sud — septembre 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terra: #C77B53;
+    --terra-dark: #A85F3D;
+    --ocre: #D4A574;
+    --crema: #F5F0E6;
+    --crema-dark: #EBE3D3;
+    --azul: #2C5F7C;
+    --azul-dark: #1A3D52;
+    --texto: #3E2723;
+    --texto-soft: #6B5247;
+    --acento: #E8A33D;
+    --rouge: #B5462E;
+    --vert: #5B7A3A;
+    --gris: #999;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--crema);
+    color: var(--texto);
+    line-height: 1.65;
+    min-height: 100vh;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--texto);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  a { color: var(--terra-dark); text-decoration: none; transition: all 0.2s; }
+  a:hover { color: var(--azul); }
+
+  /* Navigation index */
+  nav.index {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--crema);
+    border-bottom: 1px solid var(--crema-dark);
+    padding: 0.7rem 5%;
+    box-shadow: 0 2px 8px rgba(62,39,35,0.05);
+  }
+  nav.index ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 1.5rem;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  nav.index a {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--texto-soft);
+    padding: 0.3rem 0;
+    white-space: nowrap;
+  }
+  nav.index a:hover { color: var(--terra-dark); }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, var(--terra) 0%, var(--terra-dark) 50%, var(--azul-dark) 100%);
+    color: var(--crema);
+    padding: 80px 5% 70px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255,255,255,0.03) 30px, rgba(255,255,255,0.03) 31px),
+      repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(255,255,255,0.03) 30px, rgba(255,255,255,0.03) 31px);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: var(--crema);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  .hero .accent-line { width: 80px; height: 3px; background: var(--ocre); margin: 1.5rem auto; }
+  .hero .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    margin-bottom: 1rem;
+    opacity: 0.95;
+  }
+  .hero .meta {
+    font-size: 0.95rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .hero .pour-mamie { margin-top: 2rem; font-style: italic; opacity: 0.8; font-size: 0.95rem; }
+
+  /* Sections */
+  main { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
+  section { padding: 70px 0; border-bottom: 1px solid var(--crema-dark); scroll-margin-top: 70px; }
+  section:last-child { border-bottom: none; }
+  section h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 0.5rem;
+    color: var(--terra-dark);
+  }
+  section h2 + .section-sub {
+    color: var(--texto-soft);
+    font-style: italic;
+    margin-bottom: 2.5rem;
+    font-size: 1.05rem;
+  }
+
+  /* À trancher (highlight) */
+  .a-trancher {
+    background: linear-gradient(135deg, #FFF8EE 0%, #FCEDD9 100%);
+    border-left: 5px solid var(--rouge);
+    border-radius: 8px;
+    padding: 30px 35px;
+    margin: 50px auto 0;
+    max-width: 1100px;
+    scroll-margin-top: 70px;
+  }
+  .a-trancher h2 {
+    color: var(--rouge);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  .a-trancher .question {
+    margin: 1.2rem 0;
+    padding: 1rem 1.2rem;
+    background: rgba(255,255,255,0.6);
+    border-radius: 6px;
+  }
+  .a-trancher .question strong { color: var(--rouge); }
+  .a-trancher .question p { margin-top: 0.4rem; color: var(--texto-soft); }
+
+  /* Aperçu / parcours */
+  .parcours { list-style: none; display: flex; flex-wrap: wrap; gap: 0; counter-reset: etape; }
+  .parcours li {
+    counter-increment: etape;
+    flex: 1 1 200px;
+    padding: 1.2rem 1rem;
+    border-bottom: 2px solid var(--crema-dark);
+    position: relative;
+  }
+  .parcours li::before {
+    content: counter(etape);
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--terra);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .parcours .lieu { font-weight: 600; color: var(--texto); font-size: 1.05rem; }
+  .parcours .dates { color: var(--texto-soft); font-size: 0.85rem; margin-top: 0.2rem; }
+
+  /* Graphique altitude */
+  .altitudes-graph {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem 1rem 1rem;
+    box-shadow: 0 1px 3px rgba(62,39,35,0.08);
+    margin-top: 1.5rem;
+    overflow-x: auto;
+  }
+  .altitudes-graph svg {
+    width: 100%;
+    min-width: 700px;
+    height: auto;
+    display: block;
+  }
+  .altitudes-graph .legend {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--texto-soft);
+  }
+  .altitudes-graph .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .altitudes-graph .legend-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+  }
+
+  /* Jours */
+  .jour {
+    margin-bottom: 1.5rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(62,39,35,0.08);
+    overflow: hidden;
+    transition: all 0.2s;
+  }
+  .jour:hover { box-shadow: 0 4px 15px rgba(62,39,35,0.12); }
+  .jour summary {
+    cursor: pointer;
+    padding: 1.2rem 1.5rem;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+  }
+  .jour summary::-webkit-details-marker { display: none; }
+  .jour summary::after {
+    content: "+";
+    margin-left: auto;
+    font-size: 1.5rem;
+    color: var(--terra);
+    transition: transform 0.2s;
+  }
+  .jour[open] summary::after { content: "−"; }
+  .jour .jour-num {
+    background: var(--terra);
+    color: white;
+    min-width: 38px; height: 38px; padding: 0 10px;
+    border-radius: 19px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-size: 0.95rem;
+  }
+  .jour .jour-titre {
+    flex: 1;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+  }
+  .jour .jour-titre .date {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: var(--texto-soft);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.2rem;
+  }
+  .jour-contenu {
+    padding: 0 1.5rem 1.5rem;
+    border-top: 1px solid var(--crema-dark);
+    padding-top: 1rem;
+  }
+  .jour-contenu .activites { list-style: none; margin: 0.5rem 0; }
+  .jour-contenu .activites li {
+    padding: 0.4rem 0;
+    border-bottom: 1px dashed var(--crema-dark);
+    display: flex;
+    gap: 1rem;
+  }
+  .jour-contenu .activites li:last-child { border-bottom: none; }
+  .jour-contenu .activites .heure {
+    color: var(--terra-dark);
+    font-weight: 600;
+    flex-shrink: 0;
+    width: 110px;
+  }
+  .jour-contenu .info {
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    background: var(--crema);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: var(--texto-soft);
+  }
+  .jour-contenu .info strong { color: var(--azul-dark); }
+
+  /* Cards (hôtels & activités) */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  .card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(62,39,35,0.08);
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover { box-shadow: 0 4px 15px rgba(62,39,35,0.12); transform: translateY(-2px); }
+  .card .ville {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--terra);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--texto);
+  }
+  .card .meta { color: var(--texto-soft); font-size: 0.9rem; margin-bottom: 0.8rem; }
+  .card .description {
+    font-size: 0.92rem;
+    color: var(--texto-soft);
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+  .card .btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: var(--terra);
+    color: white;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    align-self: flex-start;
+  }
+  .card .btn:hover { background: var(--terra-dark); color: white; }
+  .card .btn-secondary { background: transparent; color: var(--terra-dark); border: 1px solid var(--terra-dark); }
+  .card .btn-secondary:hover { background: var(--terra-dark); color: white; }
+  .card .price { color: var(--azul-dark); font-weight: 600; margin-bottom: 0.5rem; }
+
+  /* Tableau budget */
+  .table-budget {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(62,39,35,0.08);
+    margin-top: 1rem;
+  }
+  .table-budget th {
+    background: var(--terra);
+    color: white;
+    padding: 1rem 1.2rem;
+    text-align: left;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .table-budget td {
+    padding: 0.9rem 1.2rem;
+    border-bottom: 1px solid var(--crema-dark);
+    font-size: 0.95rem;
+  }
+  .table-budget tr:last-child td { border-bottom: none; }
+  .table-budget tr:hover { background: var(--crema); }
+  .table-budget .montant { font-weight: 600; color: var(--azul-dark); white-space: nowrap; }
+  .table-budget .total td {
+    background: var(--crema-dark);
+    font-weight: 700;
+    border-top: 2px solid var(--terra);
+  }
+  .table-budget .total .montant { color: var(--terra-dark); }
+
+  /* Tâches */
+  .tasks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  .tasks-col {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(62,39,35,0.08);
+  }
+  .tasks-col.fait { border-top: 4px solid var(--vert); }
+  .tasks-col.attente { border-top: 4px solid var(--acento); }
+  .tasks-col.todo { border-top: 4px solid var(--rouge); }
+  .tasks-col h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--texto);
+  }
+  .tasks-col h3 .pastille {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+  }
+  .tasks-col.fait h3 .pastille { background: var(--vert); }
+  .tasks-col.attente h3 .pastille { background: var(--acento); }
+  .tasks-col.todo h3 .pastille { background: var(--rouge); }
+  .tasks-col ul { list-style: none; }
+  .tasks-col li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--crema-dark);
+    font-size: 0.92rem;
+  }
+  .tasks-col li:last-child { border-bottom: none; }
+  .tasks-col.fait li::before { content: "✓ "; color: var(--vert); font-weight: 700; }
+  .tasks-col.attente li::before { content: "⋯ "; color: var(--acento); font-weight: 700; }
+  .tasks-col.todo li::before { content: "○ "; color: var(--rouge); font-weight: 700; }
+
+  /* Footer */
+  footer {
+    background: var(--azul-dark);
+    color: var(--crema);
+    padding: 50px 5%;
+    text-align: center;
+    margin-top: 60px;
+  }
+  footer p { opacity: 0.85; margin-bottom: 0.5rem; }
+  footer .signature {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+
+  /* Mobile */
+  @media (max-width: 700px) {
+    nav.index { padding: 0.5rem 5%; }
+    nav.index ul { gap: 0.2rem 0.8rem; }
+    nav.index a { font-size: 0.8rem; }
+    .hero { padding: 60px 5% 50px; }
+    section { padding: 50px 0; }
+    .a-trancher { margin: 30px 5% 0; padding: 25px 20px; }
+    .jour summary { padding: 1rem; }
+    .jour-contenu { padding: 0 1rem 1rem; }
+    .jour-contenu .activites li { flex-direction: column; gap: 0.2rem; }
+    .jour-contenu .activites .heure { width: auto; font-size: 0.85rem; }
+    .parcours li { flex: 1 1 calc(50% - 1px); }
+    .table-budget th, .table-budget td { padding: 0.7rem 0.8rem; font-size: 0.88rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="index">
+  <ul>
+    <li><a href="#a-trancher">À trancher</a></li>
+    <li><a href="#apercu">Aperçu</a></li>
+    <li><a href="#altitudes">Altitudes</a></li>
+    <li><a href="#jour-par-jour">Jour par jour</a></li>
+    <li><a href="#hotels">Hôtels</a></li>
+    <li><a href="#activites">Activités</a></li>
+    <li><a href="#budget">Budget</a></li>
+    <li><a href="#taches">Tâches</a></li>
+    <li><a href="#contacts">Numéros utiles</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="hero-content">
+    <h1>Pérou · Bolivie · Chili</h1>
+    <div class="accent-line"></div>
+    <p class="subtitle">Notre voyage du 5 au 25 septembre 2026</p>
+    <p class="meta">21 jours · Lima → Arica → Lima · 2 voyageurs</p>
+    <p class="pour-mamie">Préparé par Arnaud, pour mamie 💛</p>
+  </div>
+</header>
+
+<aside class="a-trancher" id="a-trancher">
+  <h2>À trancher</h2>
+  <p style="margin-bottom: 1rem; color: var(--texto-soft);">Quelques décisions qui attendent ton retour pour qu'on puisse réserver la suite.</p>
+
+  <div class="question">
+    <strong>1. Machu Picchu — oui ou non ?</strong>
+    <p>Deux variantes pour Cusco : <em>avec Machu Picchu version light</em> (lever 5h30, créneau visite 8h) ou <em>sans Machu Picchu</em>, avec Vallée Sacrée approfondie (Maras, Moray, Salinas + Cusco profonde, aucun lever tôt).</p>
+  </div>
+
+  <div class="question">
+    <strong>2. Photo de ton passeport</strong>
+    <p>Pour réserver les hôtels et le vol Cusco → La Paz qui partira vite côté disponibilités.</p>
+  </div>
+</aside>
+
+<main>
+
+<section id="apercu">
+  <h2>Le voyage en un coup d'œil</h2>
+  <p class="section-sub">7 grandes étapes, des Andes péruviennes au Salar bolivien jusqu'à l'océan chilien.</p>
+
+  <ol class="parcours">
+    <li><span class="lieu">Lima → Nazca</span><span class="dates">5-6 septembre</span></li>
+    <li><span class="lieu">Arequipa</span><span class="dates">7-9 septembre</span></li>
+    <li><span class="lieu">Cusco · Vallée Sacrée</span><span class="dates">9-12 septembre</span></li>
+    <li><span class="lieu">La Paz · Cholitas</span><span class="dates">12-14 septembre</span></li>
+    <li><span class="lieu">Salar d'Uyuni</span><span class="dates">15-18 septembre</span></li>
+    <li><span class="lieu">San Pedro de Atacama</span><span class="dates">18-20 septembre</span></li>
+    <li><span class="lieu">Arica</span><span class="dates">21-24 septembre</span></li>
+  </ol>
+</section>
+
+<section id="altitudes">
+  <h2>Profil des altitudes</h2>
+  <p class="section-sub">Aperçu des altitudes traversées. Montées progressives, redescente possible en moins d'une journée — sauf pendant le tour Uyuni (3 jours en altiplano).</p>
+
+  <div class="altitudes-graph">
+    <svg viewBox="0 0 1000 380" preserveAspectRatio="xMidYMid meet" aria-label="Profil d'altitudes du voyage">
+      <defs>
+        <linearGradient id="altGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#C77B53" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#C77B53" stop-opacity="0.05"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Lignes de référence horizontales -->
+      <g stroke="#EBE3D3" stroke-width="1" stroke-dasharray="3,3">
+        <line x1="60" y1="320" x2="970" y2="320"/>
+        <line x1="60" y1="270" x2="970" y2="270"/>
+        <line x1="60" y1="220" x2="970" y2="220"/>
+        <line x1="60" y1="170" x2="970" y2="170"/>
+        <line x1="60" y1="120" x2="970" y2="120"/>
+        <line x1="60" y1="70" x2="970" y2="70"/>
+      </g>
+
+      <!-- Échelle Y -->
+      <g font-family="Inter, sans-serif" font-size="11" fill="#6B5247" text-anchor="end">
+        <text x="50" y="324">0</text>
+        <text x="50" y="274">1000</text>
+        <text x="50" y="224">2000</text>
+        <text x="50" y="174">3000</text>
+        <text x="50" y="124">4000</text>
+        <text x="50" y="74">5000 m</text>
+      </g>
+
+      <!-- Zone sous la courbe -->
+      <path d="M 80 320 L 130 290 L 210 203 L 290 150 L 370 180 L 450 150 L 530 138 L 610 125 L 690 137 L 740 138 L 790 91 L 830 70 L 880 199 L 930 320 L 970 320 L 80 320 Z"
+            fill="url(#altGrad)"/>
+
+      <!-- Ligne d'altitudes -->
+      <path d="M 80 320 L 130 290 L 210 203 L 290 150 L 370 180 L 450 150 L 530 138 L 610 125 L 690 137 L 740 138 L 790 91 L 830 70 L 880 199 L 930 320 L 970 320"
+            fill="none" stroke="#A85F3D" stroke-width="2.5" stroke-linejoin="round"/>
+
+      <!-- Points d'étapes -->
+      <g>
+        <circle cx="80" cy="320" r="5" fill="#A85F3D"/>
+        <circle cx="130" cy="290" r="5" fill="#A85F3D"/>
+        <circle cx="210" cy="203" r="5" fill="#A85F3D"/>
+        <circle cx="290" cy="150" r="5" fill="#A85F3D"/>
+        <circle cx="370" cy="180" r="5" fill="#A85F3D"/>
+        <circle cx="450" cy="150" r="5" fill="#A85F3D"/>
+        <circle cx="530" cy="138" r="5" fill="#A85F3D"/>
+        <circle cx="610" cy="125" r="5" fill="#B5462E"/>
+        <circle cx="690" cy="137" r="5" fill="#A85F3D"/>
+        <circle cx="740" cy="138" r="5" fill="#A85F3D"/>
+        <circle cx="790" cy="91" r="6" fill="#B5462E"/>
+        <circle cx="830" cy="70" r="6" fill="#B5462E"/>
+        <circle cx="880" cy="199" r="5" fill="#A85F3D"/>
+        <circle cx="930" cy="320" r="5" fill="#A85F3D"/>
+      </g>
+
+      <!-- Étiquettes au-dessus avec altitudes -->
+      <g font-family="Inter, sans-serif" font-size="10" fill="#3E2723" font-weight="600" text-anchor="middle">
+        <text x="80" y="335">0</text>
+        <text x="130" y="305">590</text>
+        <text x="210" y="218">2335</text>
+        <text x="290" y="138">3400</text>
+        <text x="370" y="195">2800</text>
+        <text x="450" y="165">3400</text>
+        <text x="530" y="125">3650</text>
+        <text x="610" y="113">4100</text>
+        <text x="690" y="125">3660</text>
+        <text x="740" y="125">3600</text>
+        <text x="790" y="79">4600</text>
+        <text x="830" y="58">~5000</text>
+        <text x="880" y="214">2410</text>
+        <text x="930" y="335">0</text>
+      </g>
+
+      <!-- Labels en bas avec rotation -->
+      <g font-family="Inter, sans-serif" font-size="11" fill="#3E2723">
+        <text x="80" y="350" transform="rotate(-30 80 350)" text-anchor="end">Lima</text>
+        <text x="130" y="350" transform="rotate(-30 130 350)" text-anchor="end">Nazca</text>
+        <text x="210" y="350" transform="rotate(-30 210 350)" text-anchor="end">Arequipa</text>
+        <text x="290" y="350" transform="rotate(-30 290 350)" text-anchor="end">Cusco</text>
+        <text x="370" y="350" transform="rotate(-30 370 350)" text-anchor="end">Vallée Sacrée</text>
+        <text x="450" y="350" transform="rotate(-30 450 350)" text-anchor="end">Cusco</text>
+        <text x="530" y="350" transform="rotate(-30 530 350)" text-anchor="end">La Paz</text>
+        <text x="610" y="350" transform="rotate(-30 610 350)" text-anchor="end">El Alto</text>
+        <text x="690" y="350" transform="rotate(-30 690 350)" text-anchor="end">Uyuni</text>
+        <text x="740" y="350" transform="rotate(-30 740 350)" text-anchor="end">Quemes</text>
+        <text x="790" y="350" transform="rotate(-30 790 350)" text-anchor="end">Tayka del Desierto</text>
+        <text x="830" y="350" transform="rotate(-30 830 350)" text-anchor="end">Cols Uyuni</text>
+        <text x="880" y="350" transform="rotate(-30 880 350)" text-anchor="end">San Pedro Atacama</text>
+        <text x="930" y="350" transform="rotate(-30 930 350)" text-anchor="end">Arica</text>
+      </g>
+    </svg>
+
+    <div class="legend">
+      <div class="legend-item"><span class="legend-dot" style="background: #A85F3D;"></span> Étape (nuit ou passage court)</div>
+      <div class="legend-item"><span class="legend-dot" style="background: #B5462E;"></span> Point d'altitude marqué</div>
+    </div>
+  </div>
+</section>
+
+<section id="jour-par-jour">
+  <h2>Jour par jour</h2>
+  <p class="section-sub">Clique sur une journée pour ouvrir le détail.</p>
+
+  <details class="jour">
+    <summary><span class="jour-num">1</span><span class="jour-titre"><span class="date">Samedi 5 septembre</span>Lima → Nazca · arrivée et bus</span></summary>
+    <div class="jour-contenu">
+      <ul class="activites">
+        <li><span class="heure">06:30</span>Arrivée Lima vol IB6660 depuis Madrid</li>
+        <li><span class="heure">07:00</span>Taxi officiel comptoir aéroport vers Terminal Cruz del Sur Plaza Norte</li>
+        <li><span class="heure">10:00</span>Bus Cruz del Sur Cruzero · Lima → Nazca (environ 7h)</li>
+        <li><span class="heure">~17:00</span>Arrivée Nazca, check-in Casa Andina Premium, repos</li>
+        <li><span class="heure">soir</span>Dîner léger à l'hôtel</li>
+      </ul>
+      <div class="info"><strong>Pas de balade Lima avec bagages</strong>, on enchaîne directement bus de jour. Reposant.</div>
+    </div>
+  </details>
+
+  <details class="jour">
+    <summary><span class="jour-num">2</span><span class="jour-titre"><span class="date">Dimanche 6 septembre</span>Survol des lignes de Nazca · bus de nuit</span></summary>
+    <div class="jour-contenu">
+      <ul class="activites">
+        <li><span class="heure">07:45</span>Transfert hôtel vers aérodrome María Reiche</li>
+        <li><span class="heure">08:30</span>Survol AeroParacas (environ 35 min)</li>
+        <li><span class="heure">midi</span>Déjeuner Nazca, sieste hôtel</li>
+        <li><span class="heure">14:00</span>Acueductos de Cantalloc (balade tranquille, 2h)</li>
+        <li><span class="heure">19:00</span>Dîner léger</li>
+        <li><span class="heure">22:00</span>Bus Cruz del Sur Sleeper · Nazca → Arequipa (environ 10h)</li>
+      </ul>
+      <div class="info"><strong>Late check-out demandé</strong> à Casa Andina pour pouvoir se doucher avant le bus de nuit.</div>
+    </div>
+  </details>
+
+  <details class="jour">
+    <summary><span class="jour-num">3</span><span class="jour-titre"><span class="date">Lundi 7 septembre</span>Arequipa · arrivée</span></summary>
+    <div class="jour-contenu">
+      <ul class="activites">
+        <li><span class="heure">~08:00</span>Arrivée Terminal Arequipa, taxi vers La Hostería Boutique</li>
+        <li><span class="heure">10:00</span>Petit-déjeuner hôtel, repos après le bus</li>
+        <li><span class="heure">11:00</span>Plaza de Armas + Cathédrale</li>
+        <li><span class="heure">13:00</span>Déjeuner Sol de Mayo (Yanahuara, picantería historique de 1897)</li>
+        <li><span class="heure">14:30</span>Sieste / repos</li>
+        <li><span class="heure">16:30</span>Mirador de Yanahuara · vue sur le volcan Misti</li>
+        <li><span class="heure">20:00</span>Dîner Cau Cau 2</li>
+      </ul>
+      <div class="info">Première étape d'altitude · <strong>2 335 m</strong>. Acclimatation douce.</div>
+    </div>
+  </details>
+
+  <details class="jour">
+    <summary><span class="jour-num">4</span><span class="jour-titre"><span class="date">Mardi 8 septembre</span>Arequipa · journée pleine</span></summary>
+    <div class="jour-contenu">
+      <ul class="activites">
+        <li><span class="heure">matin</span>Couvent Santa Catalina (3 à 4h, magnifique cité monastique du XVIᵉ siècle)</li>
+        <li><span class="heure">13:00</span>Déjeuner La Nueva Palomino (Yanahuara, picantería géante)</li>
+        <li><span class="heure">15:00</span>Sieste / repos</li>
+        <li><span class="heure">16:30</span>Musée Santuarios Andinos · momie Juanita</li>
+        <li><span class="heure">18:30</span>Promenade Plaza de Armas illuminée</li>
+        <li><span class="heure">20:30</span>Dîner libre (option Zig Zag)</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="jour">
+    <summary><span class="jour-num">5</span><span class="jour-titre"><span class="date">Mercredi 9 septembre</span>Arequipa → Cusco ✈</span></summary>
+    <div class="jour-contenu">
+      <ul class="activites">
+        <li><span class="heure">matin</span>Petit-déjeuner cool, balade Plaza de Armas, repos</li>
+        <li><span class="heure">11:30</span>Check-out La Hostería</li>
+        <li><span class="heure">14:00</span>Vol LATAM Arequipa → Cusco</li>
+        <li><span class="heure">14:55</span>Arrivée Cusco</li>
+        <li><span class="heure">16:00</span>Check-in Hotel Monasterio San Pedro, <strong>repos obligatoire</strong></li>
+        <li><span class="heure">18:30</span>Très courte balade Plaza de Armas</li>
+        <li><span class="heure">19:30</span>Dîner léger (soupe quinoa)</li>
+      </ul>
+      <div class="info"><strong>Saut d'altitude</strong> · 2 335 m vers 3 400 m. Coca, hydratation, repos.</div>
+    </div>
+  </details>
+
+  <details class="jour" id="variantes-cusco">
+    <summary><span class="jour-num">6</span><span class="jour-titre"><span class="date">Jeudi 10 septembre</span>Cusco → Vallée Sacrée → Ollantaytambo</span></summary>
+    <div class="jour-contenu">
+      <p style="margin-bottom: 1rem;">Programme avec <strong>chauffeur privé pour la journée</strong>. Variante en attente de ta décision Machu Picchu.</p>
+      <ul class="activites">
+        <li><span class="heure">matin</span>Pisac · ruines incas et marché traditionnel</li>
+        <li><span class="heure">midi</span>Déjeuner Vallée Sacrée (Wayra ou El Huacatay, Urubamba)</li>
+        <li><span class="heure">après-midi</span>Si <strong>variante sans Machu Picchu</strong> : Maras, Moray, Salinas. Sinon trajet vers Ollantaytambo</li>
+        <li><span class="heure">~17:00</span>Forteresse d'Ollantaytambo (1h30)</li>
+        <li><span class="heure">soir</span>Dîner et nuit El Albergue (gare d'Ollantaytambo)</li>
+      </ul>
+      <div class="info">Vallée Sacrée descend en altitude (environ 2 800 m) · <strong>bénéfique pour l'acclimatation</strong>.</div>
+    </div>
+  </details>
+
+  <details class="jour">
+    <summary><span class="jour-num">7</span><span class="jour-titre"><span class="date">Vendredi 11 septembre</span>Variante Machu Picchu ou Cusco profond</span></summary>
+    <div class="jour-contenu">
+      <p style="margin-bottom: 1rem;"><strong>Variante avec Machu Picchu :</strong></p>
+      <ul class="activites">
+        <li><span class="heure">05:30</span>Lever, train Ollantaytambo → Aguas Calientes 6h10</li>
+        <li><span class="heure">~08:00</span>Bus Aguas Calientes → Machu Picchu, créneau Circuit 2-A "Clásico" 8h-9h</li>
+        <li><span class="heure">~12:00</span>Retour Aguas Calientes, train vers Ollantaytambo l'après-midi</li>
+        <li><span class="heure">soir</span>Retour Cusco, nuit Hotel Monasterio San Pedro</li>
+      </ul>
+      <p style="margin: 1rem 0;"><strong>Variante sans Machu Picchu :</strong></p>
+      <ul class="activites">
+        <li><span class="heure">matin</span>Visite d'Ollantaytambo à pied (forteresse et village inca préservé)</li>
+        <li><span class="heure">après-midi</span>Retour Cusco, Sacsayhuamán, San Blas, artisanat</li>
+        <li><span class="heure">soir</span>Dîner Cusco, nuit Hotel Monasterio San Pedro</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="jour">
+    <summary><span class="jour-num">8</span><span class="jour-titre"><span class="date">Samedi 12 septembre</span>Cusco → La Paz ✈</span></summary>
+    <div class="jour-contenu">
+      <ul class="activites">
+        <li><span class="heure">matin</span>Petit-déjeuner, check-out, taxi vers aéroport</li>
+        <li><span class="heure">12:30</span>Vol Avianca Cusco → La Paz</li>
+        <li><span class="heure">14:45</span>Arrivée El Alto (4 060 m), taxi vers Sopocachi (3 650 m)</li>
+        <li><span class="heure">16:15</span>Check-in Stannum Boutique Hotel, repos</li>
+        <li><span class="heure">19:00</span>Dîner léger Sopocachi</li>
+        <li><span class="heure">21:00</span>Coucher tôt</li>
+      </ul>
+      <div class="info"><strong>Aéroport El Alto = 4 060 m, le plus haut commercial au monde.</strong> Marche lente à la sortie d'avion, hydratation.</div>
+    </div>
+  </details>
+
+  <details class="jour">
+    <summary><span class="jour-num">9</span><span class="jour-titre"><span class="date">Dimanche 13 septembre</span>La Paz · Cholitas wrestling 🥊</span></summary>
+    <div class="jour-contenu">
+      <ul class="activites">
+        <li><span class="heure">10:00</span>Mi Teleférico (lignes Verde et Roja, vue panoramique sur la cuvette)</li>
+        <li><span class="heure">11:30</span>Plaza Murillo + Catedral + Palais Présidentiel</li>
+        <li><span class="heure">13:00</span>Déjeuner (Popular Cocina Boliviana ou Café del Mundo)</li>
+        <li><span class="heure">15:00</span>Pickup Red Cap Walking Tours pour les Cholitas</li>
+        <li><span class="heure">16:00-19:00</span>Spectacle Cholitas wrestling à El Alto</li>
+        <li><span class="heure">20:30</span>Dîner léger près hôtel</li>
+      </ul>
+      <div class="info">Spectacle théâtral haut en couleur, pas un vrai catch, plutôt un mix carnaval-soap-opera. 4 050 m, veste chaude.</div>
+    </div>
+  </details>
+
+  <details class="jour">
+    <summary><span class="jour-num">10</span><span class="jour-titre"><span class="date">Lundi 14 septembre</span>La Paz · Bus de nuit → Uyuni</span></summary>
+    <div class="jour-contenu">
+      <ul class="activites">
+        <li><span class="heure">10:00</span>Mercado de las Brujas + Calle Sagárnaga (souvenirs)</li>
+        <li><span class="heure">11:30</span>Iglesia San Francisco + musée + toit</li>
+        <li><span class="heure">13:00</span>Déjeuner</li>
+        <li><span class="heure">14:30</span>Sieste / repos</li>
+        <li><span class="heure">16:00</span>Valle de la Luna (taxi 30 min, balade facile)</li>
+        <li><span class="heure">19:00</span>Dîner léger</li>
+        <li><span class="heure">21:15</span>Bus Cisne Bus · La Paz → Uyuni (environ 9h)</li>
+      </ul>
+      <div class="info">Late check-out Stannum demandé pour douche avant le bus de nuit.</div>
+    </div>
+  </details>
+
+  <details class="jour">
+    <summary><span class="jour-num">11-14</span><span class="jour-titre"><span class="date">15 au 18 septembre</span>Tour privé du Salar d'Uyuni 🌅</span></summary>
+    <div class="jour-contenu">
+      <p style="margin-bottom: 1rem;">Tour privé 4×4 avec chauffeur, hôtels chauffés, oxygène à bord. Agence à choisir parmi les 8 sollicitées.</p>
+      <ul class="activites">
+        <li><span class="heure">15/9</span>Arrivée Uyuni le matin, démarrage tour : Cementerio de Trenes, Salar, Isla Incahuasi, sunset</li>
+        <li><span class="heure">16/9</span>Volcan Tunupa, Salar Sud, nuit San Pedro de Quemes (environ 3 600 m)</li>
+        <li><span class="heure">17/9</span>Désert Siloli, Árbol de Piedra, Laguna Colorada (flamants), refuge Tayka del Desierto</li>
+        <li><span class="heure">18/9</span>Termas de Polques, Laguna Verde, frontière Hito Cajón, arrivée San Pedro de Atacama l'après-midi</li>
+      </ul>
+      <div class="info"><strong>Pic du voyage</strong> · cols environ 5 000 m, refuge environ 4 600 m. Acclimatation faite en amont. <strong>Géysers Sol de Mañana retirés du tour</strong> pour ne pas avoir à se lever à 4h du matin.</div>
+    </div>
+  </details>
+
+  <details class="jour">
+    <summary><span class="jour-num">14</span><span class="jour-titre"><span class="date">Vendredi 18 septembre</span>San Pedro de Atacama · Fiestas Patrias 🇨🇱</span></summary>
+    <div class="jour-contenu">
+      <ul class="activites">
+        <li><span class="heure">~13:00</span>Arrivée San Pedro de Atacama (2 410 m, redescente nette)</li>
+        <li><span class="heure">après-midi</span>Check-in Hotel La Aldea, repos, douche chaude</li>
+        <li><span class="heure">soir</span>Fonda Fiestas Patrias (asado, cueca, chicha) — Arnaud seul si mamie est fatiguée</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="jour">
+    <summary><span class="jour-num">15</span><span class="jour-titre"><span class="date">Samedi 19 septembre</span>San Pedro · vélo et étoiles 🌌</span></summary>
+    <div class="jour-contenu">
+      <ul class="activites">
+        <li><span class="heure">matin</span>Repos hôtel, balade centre tranquille</li>
+        <li><span class="heure">13:00</span>Déjeuner</li>
+        <li><span class="heure">14:30</span>Sieste / repos</li>
+        <li><span class="heure">16:30</span>Vélo Quebrada de Catarpe (sentier plat, paysage rouge spectaculaire)</li>
+        <li><span class="heure">19:30</span>Dîner léger</li>
+        <li><span class="heure">22:00</span><strong>SPACE Obs · tour astronomique en français</strong> avec Alain Maury</li>
+      </ul>
+      <div class="info">Cieux d'Atacama parmi les plus clairs du monde. Télescope de 115 cm, le plus grand de l'hémisphère sud pour observation visuelle.</div>
+    </div>
+  </details>
+
+  <details class="jour">
+    <summary><span class="jour-num">16</span><span class="jour-titre"><span class="date">Dimanche 20 septembre</span>Termas de Puritama · Bus → Arica 🛁</span></summary>
+    <div class="jour-contenu">
+      <ul class="activites">
+        <li><span class="heure">10:00</span>Termas de Puritama (bains chauds 28 à 31°C, canyon, 8 piscines naturelles)</li>
+        <li><span class="heure">13:30</span>Retour San Pedro, déjeuner</li>
+        <li><span class="heure">15:00</span>Repos, late check-out</li>
+        <li><span class="heure">19:30</span>Taxi Terminal San Pedro</li>
+        <li><span class="heure">20:00</span>Bus Frontera del Norte · San Pedro → Arica (environ 9h45)</li>
+      </ul>
+      <div class="info">Arrivée Arica vers 5h45 le 21/9.</div>
+    </div>
+  </details>
+
+  <details class="jour">
+    <summary><span class="jour-num">17-19</span><span class="jour-titre"><span class="date">21 au 23 septembre</span>Arica</span></summary>
+    <div class="jour-contenu">
+      <p>3 jours sur place, sans planification touristique. Repos avant le retour.</p>
+      <p style="margin-top: 1rem; font-style: italic; color: var(--texto-soft);">Arnaud profite pour quelques courses perso (coiffeur, dentiste).</p>
+    </div>
+  </details>
+
+  <details class="jour">
+    <summary><span class="jour-num">20</span><span class="jour-titre"><span class="date">Jeudi 24 septembre</span>Arica → Tacna → Lima ✈</span></summary>
+    <div class="jour-contenu">
+      <ul class="activites">
+        <li><span class="heure">09:30</span>Départ Arica → Tacna (frontière environ 1h)</li>
+        <li><span class="heure">11:00</span>Plaza de Armas Tacna · Cathédrale d'Eiffel</li>
+        <li><span class="heure">12:30</span>Déjeuner picantería tacneña</li>
+        <li><span class="heure">15:30</span>Aéroport Tacna</li>
+        <li><span class="heure">16:20</span>Vol LATAM · Tacna → Lima</li>
+        <li><span class="heure">18:15</span>Arrivée Lima, taxi vers Tierra Viva Miraflores Centro</li>
+        <li><span class="heure">20:30</span>Dîner cebicheria · dernière soirée</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="jour">
+    <summary><span class="jour-num">21</span><span class="jour-titre"><span class="date">Vendredi 25 septembre</span>Vol retour Madrid</span></summary>
+    <div class="jour-contenu">
+      <ul class="activites">
+        <li><span class="heure">tôt matin</span>Petit-déjeuner, taxi vers aéroport Lima</li>
+        <li><span class="heure">11:00</span>Vol IB0124 · Lima → Madrid</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<section id="hotels">
+  <h2>Nos hôtels</h2>
+  <p class="section-sub">Choisis pour le calme, le chauffage et l'eau chaude.</p>
+
+  <div class="grid">
+    <article class="card">
+      <div class="ville">Nazca · 1 nuit</div>
+      <h3>Casa Andina Premium</h3>
+      <p class="description">Mid-range fiable, eau chaude garantie, repos après le bus. Late check-out demandé pour le bus de nuit.</p>
+      <a class="btn" href="https://www.booking.com/searchresults.fr.html?ss=Casa+Andina+Premium+Nazca" target="_blank" rel="noopener">Voir sur Booking</a>
+    </article>
+
+    <article class="card">
+      <div class="ville">Arequipa · 2 nuits</div>
+      <h3>La Hostería Boutique</h3>
+      <p class="description">Boutique 4* dans le centre historique, charme colonial, chauffage central, déjà testé par Arnaud.</p>
+      <a class="btn" href="https://www.booking.com/searchresults.fr.html?ss=La+Hosteria+Boutique+Arequipa" target="_blank" rel="noopener">Voir sur Booking</a>
+    </article>
+
+    <article class="card">
+      <div class="ville">Cusco · 2 nuits</div>
+      <h3>Hotel Monasterio San Pedro</h3>
+      <p class="description">3*, pas en pente (rare à Cusco), chauffage présent, en face du Marché San Pedro. Demander chambre côté patio.</p>
+      <a class="btn" href="https://www.booking.com/searchresults.fr.html?ss=Hotel+Monasterio+San+Pedro+Cusco" target="_blank" rel="noopener">Voir sur Booking</a>
+    </article>
+
+    <article class="card">
+      <div class="ville">Vallée Sacrée · 1 nuit</div>
+      <h3>El Albergue Ollantaytambo</h3>
+      <p class="description">Iconique, dans la gare, restaurant gastronomique du potager à l'assiette. (À confirmer selon variante Machu Picchu.)</p>
+      <a class="btn btn-secondary" href="https://www.elalbergue.com/" target="_blank" rel="noopener">Voir le site</a>
+    </article>
+
+    <article class="card">
+      <div class="ville">La Paz · 2 nuits</div>
+      <h3>Stannum Boutique Hotel & Spa</h3>
+      <p class="description">Multicentro/Sopocachi, calme malgré le centre, chauffage présent, sécurisé. Demander chambre côté patio.</p>
+      <a class="btn" href="https://www.booking.com/searchresults.fr.html?ss=Stannum+Boutique+Hotel+La+Paz" target="_blank" rel="noopener">Voir sur Booking</a>
+    </article>
+
+    <article class="card">
+      <div class="ville">Salar d'Uyuni · 3 nuits</div>
+      <h3>Hôtels du tour privé</h3>
+      <p class="description">Hôtels chauffés inclus dans le tour 4×4 privé. Chaîne Tayka idéalement (Tayka de Sal, Tayka de Piedra, Tayka del Desierto).</p>
+    </article>
+
+    <article class="card">
+      <div class="ville">San Pedro de Atacama · 2 nuits</div>
+      <h3>Hotel La Aldea</h3>
+      <p class="description">Mid-range simple et fiable. ⚠ Fiestas Patrias = haute saison, à réserver vite.</p>
+      <a class="btn" href="https://www.booking.com/searchresults.fr.html?ss=Hotel+La+Aldea+San+Pedro+Atacama" target="_blank" rel="noopener">Voir sur Booking</a>
+    </article>
+
+    <article class="card">
+      <div class="ville">Arica · 3 nuits</div>
+      <h3>Hébergement à Arica</h3>
+      <p class="description">Sur place, repos avant la dernière étape Lima.</p>
+    </article>
+
+    <article class="card">
+      <div class="ville">Lima · 1 nuit</div>
+      <h3>Tierra Viva Miraflores Centro</h3>
+      <p class="description">Mid-range, chauffage présent, calme côté patio, proche aéroport pour le retour.</p>
+      <a class="btn" href="https://www.booking.com/searchresults.fr.html?ss=Tierra+Viva+Miraflores+Centro" target="_blank" rel="noopener">Voir sur Booking</a>
+    </article>
+  </div>
+</section>
+
+<section id="activites">
+  <h2>Activités phares</h2>
+  <p class="section-sub">Les expériences qu'on garde en mémoire toute une vie.</p>
+
+  <div class="grid">
+    <article class="card">
+      <div class="ville">6 septembre · Nazca</div>
+      <h3>Survol des lignes de Nazca</h3>
+      <p class="description">35 minutes de vol au-dessus des géoglyphes mystérieux. Compagnie réputée pour la sécurité.</p>
+      <a class="btn" href="https://www.aeroparacas.com/en/service/nazca-lines-flight" target="_blank" rel="noopener">AeroParacas</a>
+    </article>
+
+    <article class="card">
+      <div class="ville">11 septembre · variante avec MP</div>
+      <h3>Machu Picchu (light)</h3>
+      <p class="description">Train Ollantaytambo aller-retour vers Aguas Calientes + entrée Circuit 2-A "Clásico" + bus. Septembre = shoulder season, foule modérée.</p>
+      <a class="btn btn-secondary" href="https://www.tuboleto.cultura.pe/" target="_blank" rel="noopener">Tickets officiels</a>
+    </article>
+
+    <article class="card">
+      <div class="ville">13 septembre · La Paz</div>
+      <h3>Cholitas wrestling 🥊</h3>
+      <p class="description">Spectacle de catch théâtral à El Alto, dimanche après-midi. Pickup hôtel inclus.</p>
+      <a class="btn" href="https://redcapwalkingtours.com/tours/cholita-wrestling/" target="_blank" rel="noopener">Red Cap Tours</a>
+    </article>
+
+    <article class="card">
+      <div class="ville">15 au 18 septembre</div>
+      <h3>Tour Salar d'Uyuni privé 4 jours</h3>
+      <p class="description">4×4 privé Uyuni → San Pedro de Atacama. Salar, Isla Incahuasi, lagunes altiplánicas, désert Siloli, Laguna Colorada.</p>
+    </article>
+
+    <article class="card">
+      <div class="ville">19 septembre · San Pedro</div>
+      <h3>SPACE Obs · soirée astro 🌌</h3>
+      <p class="description">Tour astronomique en français avec Alain Maury, télescope de 115 cm. Ciels parmi les plus purs au monde.</p>
+      <a class="btn" href="http://www.spaceobs.com/en/Services/Star-Tours" target="_blank" rel="noopener">SPACE Obs</a>
+    </article>
+
+    <article class="card">
+      <div class="ville">20 septembre · San Pedro</div>
+      <h3>Termas de Puritama 🛁</h3>
+      <p class="description">8 piscines naturelles 28 à 31°C dans un canyon. Réservation obligatoire en ligne.</p>
+      <a class="btn btn-secondary" href="https://termasdepuritama.cl/" target="_blank" rel="noopener">Termas de Puritama</a>
+    </article>
+  </div>
+</section>
+
+<section id="budget">
+  <h2>Budget · ce qui est confirmé</h2>
+  <p class="section-sub">Tableau des éléments dont les prix sont connus. Tout le reste est en cours de chiffrage.</p>
+
+  <table class="table-budget">
+    <thead>
+      <tr>
+        <th>Poste</th>
+        <th>Détail</th>
+        <th>Statut</th>
+        <th style="text-align: right;">Coût (CHF)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Vol intercontinental aller</td>
+        <td>IB6660 · Madrid → Lima · 5/9</td>
+        <td>✅ Réservé</td>
+        <td class="montant">déjà payé</td>
+      </tr>
+      <tr>
+        <td>Vol intercontinental retour</td>
+        <td>IB0124 · Lima → Madrid · 25/9</td>
+        <td>✅ Réservé</td>
+        <td class="montant">déjà payé</td>
+      </tr>
+      <tr>
+        <td>Vol Arequipa → Cusco</td>
+        <td>LATAM · 9/9 · 14h00</td>
+        <td>🔍 Prix trouvé</td>
+        <td class="montant">~220</td>
+      </tr>
+      <tr>
+        <td>Vol Cusco → La Paz</td>
+        <td>Avianca · 12/9 · 12h30</td>
+        <td>🔍 Prix trouvé</td>
+        <td class="montant">~474</td>
+      </tr>
+      <tr class="total">
+        <td colspan="3">Total confirmé pour les vols domestiques (sur 3 segments)</td>
+        <td class="montant">~694</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top: 1.5rem; color: var(--texto-soft); font-style: italic;">Reste à chiffrer : vol Tacna → Lima, hôtels (8 nuits payantes), tour Uyuni 4 jours, bus longue distance, activités phares. Ces lignes seront ajoutées au tableau au fur et à mesure des réservations.</p>
+</section>
+
+<section id="taches">
+  <h2>Avancement · ce qui est fait, ce qui reste</h2>
+  <p class="section-sub">Mise à jour au fil des sessions de préparation.</p>
+
+  <div class="tasks">
+    <div class="tasks-col fait">
+      <h3><span class="pastille"></span>Déjà fait</h3>
+      <ul>
+        <li>Vols intercontinentaux Madrid ↔ Lima réservés (IB6660 et IB0124)</li>
+        <li>Itinéraire 21 jours défini</li>
+        <li>9 hôtels shortlistés et choisis</li>
+        <li>Compagnies de bus validées (Cruz del Sur, Cisne Bus, Frontera del Norte)</li>
+        <li>Compagnies vols domestiques choisies (LATAM, Avianca)</li>
+        <li>Prix trouvés pour Arequipa → Cusco et Cusco → La Paz</li>
+        <li>Activités identifiées (AeroParacas, Red Cap, SPACE Obs, Puritama)</li>
+        <li>Email préparation médicale envoyé à mamie</li>
+        <li>Devis demandé à 8 agences pour le tour Uyuni</li>
+        <li>2 premiers devis Uyuni reçus (Ruta Verde, Howlanders)</li>
+        <li>Site web partagé avec mamie</li>
+      </ul>
+    </div>
+
+    <div class="tasks-col attente">
+      <h3><span class="pastille"></span>En attente</h3>
+      <ul>
+        <li>Choix de la variante Cusco (avec ou sans Machu Picchu) — mamie</li>
+        <li>Photo du passeport — mamie</li>
+        <li>6 devis Uyuni en attente (Pie Experiences, Aracari, Bolivia Milenaria, Joker Expedition, Andean Ways, Cordillera)</li>
+      </ul>
+    </div>
+
+    <div class="tasks-col todo">
+      <h3><span class="pastille"></span>À faire — Arnaud</h3>
+      <ul>
+        <li>Vérifier la validité des passeports (>6 mois après le 25/9/2026)</li>
+        <li>Réserver le vol Avianca Cusco → La Paz (le plus urgent)</li>
+        <li>Réserver le vol LATAM Arequipa → Cusco</li>
+        <li>Trouver et réserver le vol Tacna → Lima</li>
+        <li>Choisir l'agence Uyuni après réception des devis</li>
+        <li>Réserver le tour privé Uyuni 4 jours</li>
+        <li>Si variante avec Machu Picchu : réserver entrée + train Ollantaytambo</li>
+        <li>Réserver les 8 nuits d'hôtel (Booking)</li>
+        <li>Réserver les 3 bus Cruz del Sur (Lima → Nazca, Nazca → Arequipa)</li>
+        <li>Réserver le bus Cisne Bus La Paz → Uyuni</li>
+        <li>Réserver le bus Frontera del Norte San Pedro → Arica</li>
+        <li>Réserver le survol AeroParacas</li>
+        <li>Réserver les Cholitas Red Cap</li>
+        <li>Réserver les Termas de Puritama (résa obligatoire en ligne)</li>
+        <li>Réserver SPACE Obs (tour astro français)</li>
+        <li>Réserver le chauffeur privé Vallée Sacrée</li>
+        <li>Souscrire une assurance voyage si besoin</li>
+        <li>Change USD cash pour la Bolivie</li>
+        <li>Photocopies passeports + assurances dans pochette séparée</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contacts">
+  <h2>Numéros utiles</h2>
+  <p class="section-sub">À garder dans le sac, dans le portefeuille, et dans le téléphone.</p>
+
+  <ul class="checklist" style="list-style: none; background: white; border-radius: 10px; padding: 1.5rem 2rem; box-shadow: 0 1px 3px rgba(62,39,35,0.08);">
+    <li style="padding: 0.7rem 0; border-bottom: 1px solid var(--crema-dark);"><strong>Helpline EDA Suisse 24/7</strong> (depuis l'étranger) · <a href="tel:+41800247365">+41 800 24 7 365</a></li>
+    <li style="padding: 0.7rem 0; border-bottom: 1px solid var(--crema-dark);"><strong>Ambassade de Suisse à Lima</strong> · +51 1 264 0305</li>
+    <li style="padding: 0.7rem 0; border-bottom: 1px solid var(--crema-dark);"><strong>Ambassade de Suisse à La Paz</strong> · +591 2 275 1001</li>
+    <li style="padding: 0.7rem 0; border-bottom: 1px solid var(--crema-dark);"><strong>Consulat de Suisse à Santiago</strong> · +56 2 2263 4211</li>
+    <li style="padding: 0.7rem 0; border-bottom: 1px solid var(--crema-dark);"><strong>Urgences Pérou</strong> · 106 (médical) · 105 (police)</li>
+    <li style="padding: 0.7rem 0; border-bottom: 1px solid var(--crema-dark);"><strong>Urgences Bolivie</strong> · 165 (médical) · 110 (police)</li>
+    <li style="padding: 0.7rem 0; border-bottom: 1px solid var(--crema-dark);"><strong>Urgences Chili</strong> · 131 (médical) · 133 (police)</li>
+    <li style="padding: 0.7rem 0;"><strong>Arnaud</strong> · à compléter</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>Ce site se met à jour au fur et à mesure que les choses se précisent.</p>
+  <p>N'hésite pas à le rouvrir, à zoomer sur les photos, à cliquer sur tout ce qui bouge.</p>
+  <p class="signature">Avec amour, Arnaud · avril 2026</p>
+</footer>
+
+</body>
+</html>
