@@ -503,6 +503,80 @@
   }
   .foules-encart p { font-size: 0.92rem; color: var(--texto-soft); margin-bottom: 0.4rem; }
 
+  /* Agences Uyuni */
+  .agences-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .agence {
+    background: white;
+    border-radius: 10px;
+    padding: 1.8rem 1.5rem;
+    box-shadow: 0 1px 3px rgba(62,39,35,0.08);
+    border-top: 5px solid var(--gris);
+    display: flex;
+    flex-direction: column;
+  }
+  .agence.favori {
+    border-top-color: var(--terra);
+    box-shadow: 0 4px 16px rgba(199,123,83,0.18);
+  }
+  .agence .badge {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    color: var(--terra);
+    margin-bottom: 0.5rem;
+  }
+  .agence h3 { font-size: 1.4rem; margin-bottom: 0.6rem; color: var(--texto); }
+  .agence .prix {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--azul-dark);
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+  .agence .format {
+    color: var(--texto-soft);
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+  .agence .pros, .agence .cons { list-style: none; margin: 0.4rem 0; }
+  .agence .pros li, .agence .cons li {
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    position: relative;
+    font-size: 0.92rem;
+  }
+  .agence .pros li::before {
+    content: "✓"; position: absolute; left: 0; color: var(--vert); font-weight: 700;
+  }
+  .agence .cons li::before {
+    content: "−"; position: absolute; left: 0; color: var(--rouge); font-weight: 700;
+  }
+  .agence .verdict {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--crema-dark);
+    font-style: italic;
+    color: var(--texto-soft);
+    font-size: 0.93rem;
+  }
+  .info-encart {
+    background: linear-gradient(135deg, #FFF8EE 0%, #FCEDD9 100%);
+    border-left: 4px solid var(--acento);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+  }
+  .info-encart strong { color: var(--terra-dark); }
+  .info-encart.attente { background: var(--crema); border-left-color: var(--gris); }
+  .info-encart.attente strong { color: var(--texto); }
+
   /* Footer */
   footer {
     background: var(--azul-dark);
@@ -547,6 +621,7 @@
     <li><a href="#jour-par-jour">Jour par jour</a></li>
     <li><a href="#hotels">Hôtels</a></li>
     <li><a href="#activites">Activités</a></li>
+    <li><a href="#agence-uyuni">Agence Uyuni</a></li>
     <li><a href="#budget">Budget</a></li>
     <li><a href="#taches">Tâches</a></li>
     <li><a href="#contacts">Numéros utiles</a></li>
@@ -1037,14 +1112,14 @@
 
 <section id="hotels">
   <h2>Nos hôtels</h2>
-  <p class="section-sub">Choisis pour le calme, le chauffage et l'eau chaude.</p>
+  <p class="section-sub">Choisis pour le calme, le chauffage et l'eau chaude. Tous dans des quartiers sûrs, et d'une gamme suffisante pour demander un late check-out ou une douche avant les bus de nuit et longues étapes.</p>
 
   <div class="grid">
     <article class="card">
       <div class="ville">Nazca · 1 nuit</div>
-      <h3>Casa Andina Premium</h3>
-      <p class="description">Mid-range fiable, eau chaude garantie, repos après le bus. Late check-out demandé pour le bus de nuit.</p>
-      <a class="btn" href="https://www.booking.com/searchresults.fr.html?ss=Casa+Andina+Premium+Nazca" target="_blank" rel="noopener">Voir sur Booking</a>
+      <h3>Casa Andina Standard</h3>
+      <p class="description">Mid-range fiable de la chaîne Casa Andina, petit-déj inclus, eau chaude garantie, late check-out demandé pour le bus de nuit vers Arequipa.</p>
+      <a class="btn" href="https://www.booking.com/searchresults.fr.html?ss=Casa+Andina+Standard+Nasca" target="_blank" rel="noopener">Voir sur Booking</a>
     </article>
 
     <article class="card">
@@ -1076,9 +1151,9 @@
     </article>
 
     <article class="card">
-      <div class="ville">Salar d'Uyuni · 3 nuits</div>
+      <div class="ville">Salar d'Uyuni · 2 nuits</div>
       <h3>Hôtels du tour privé</h3>
-      <p class="description">Hôtels chauffés inclus dans le tour 4×4 privé. Chaîne Tayka idéalement (Tayka de Sal, Tayka de Piedra, Tayka del Desierto).</p>
+      <p class="description">Hôtels chauffés inclus dans le tour 4×4 privé : Luna Salada sur le salar (J1) et Tayka del Desierto à 4 600 m (J2). Repas inclus, oxygène à bord du véhicule.</p>
     </article>
 
     <article class="card">
@@ -1130,9 +1205,9 @@
     </article>
 
     <article class="card">
-      <div class="ville">15 au 18 septembre</div>
-      <h3>Tour Salar d'Uyuni privé 4 jours</h3>
-      <p class="description">4×4 privé Uyuni → San Pedro de Atacama. Salar, Isla Incahuasi, lagunes altiplánicas, désert Siloli, Laguna Colorada.</p>
+      <div class="ville">16 au 18 septembre</div>
+      <h3>Tour Salar d'Uyuni privé · 3 jours</h3>
+      <p class="description">4×4 privé Uyuni → San Pedro de Atacama. Salar, Isla Incahuasi, désert Siloli, Laguna Colorada, Laguna Verde. Détail des agences comparées juste en dessous.</p>
     </article>
 
     <article class="card">
@@ -1148,6 +1223,69 @@
       <p class="description">8 piscines naturelles 28 à 31°C dans un canyon. Réservation obligatoire en ligne.</p>
       <a class="btn btn-secondary" href="https://termasdepuritama.cl/" target="_blank" rel="noopener">Termas de Puritama</a>
     </article>
+  </div>
+</section>
+
+<section id="agence-uyuni">
+  <h2>Tour Salar — choix de l'agence</h2>
+  <p class="section-sub">On a contacté 8 agences spécialisées pour comparer. Voici les retours reçus à ce jour.</p>
+
+  <div class="agences-grid">
+    <article class="agence favori">
+      <div class="badge">★ Notre proposition</div>
+      <h3>Joker Expedition</h3>
+      <p class="prix">~2 470 CHF pour deux, tout compris</p>
+      <p class="format">3 jours / 2 nuits · 16 au 18 septembre</p>
+      <ul class="pros">
+        <li>Hôtels Luna Salada (J1) + Tayka del Desierto (J2), chauffage et eau chaude confirmés</li>
+        <li>Oxygène à bord en permanence</li>
+        <li>Guide hispanophone inclus dans le prix</li>
+        <li>Entrées Réserve Eduardo Avaroa incluses</li>
+        <li>Tayka del Desierto garanti, pas de mauvaise surprise sur l'hôtel J2</li>
+        <li>José (Joker) a explicitement adapté l'offre à ton profil</li>
+      </ul>
+      <p class="verdict">Meilleur compromis sécurité, confort et prix parmi les devis reçus. Si une des cinq agences encore en attente propose mieux, on adaptera.</p>
+    </article>
+
+    <article class="agence">
+      <h3>Howlanders</h3>
+      <p class="prix">~3 080 CHF pour deux, avec guide</p>
+      <p class="format">3 jours / 2 nuits · 16 au 18 septembre</p>
+      <ul class="pros">
+        <li>Oxygène à bord et kit premiers secours</li>
+        <li>Politique d'annulation transparente</li>
+        <li>Hôtel J1 possible : Palacio de Sal (haut de gamme)</li>
+      </ul>
+      <ul class="cons">
+        <li>Risque sur l'hôtel J2 : Mallku Cueva possible (refuge basique, mal chauffé)</li>
+        <li>Guide facturé en supplément (~300 CHF)</li>
+        <li>600 CHF de plus que Joker pour un service équivalent</li>
+      </ul>
+    </article>
+
+    <article class="agence">
+      <h3>Ruta Verde</h3>
+      <p class="prix">~2 100 CHF pour deux</p>
+      <p class="format">3 jours / 2 nuits · 16 au 18 septembre</p>
+      <ul class="pros">
+        <li>Le moins cher des trois</li>
+        <li>Tayka del Desierto garanti (J2)</li>
+      </ul>
+      <ul class="cons">
+        <li>Chauffage coupé la nuit dans les chambres</li>
+        <li>Eau chaude pas 24h/24</li>
+        <li>Oxygène à bord pas confirmé</li>
+        <li>Guide pas inclus dans le prix</li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="info-encart">
+    <p><strong>Pourquoi 3 jours plutôt que 4</strong> — Joker proposait aussi un format 4 jours (~3 280 CHF), mais il n'apporte rien en acclimatation : autant profiter d'une journée de plus à La Paz.</p>
+  </div>
+
+  <div class="info-encart attente">
+    <p><strong>Encore en attente</strong> — Quatre agences ne nous ont pas encore répondu (Pie Experiences, Aracari, Andean Ways, Cordillera) : on les relance cette semaine. Bolivia Milenaria a répondu mais sans prix : ils proposent une vidéoconférence d'abord, on attend leur devis écrit avant.</p>
   </div>
 </section>
 
@@ -1189,14 +1327,56 @@
         <td>🔍 Prix trouvé</td>
         <td class="montant">~474</td>
       </tr>
+      <tr>
+        <td>Hôtel Nazca</td>
+        <td>Casa Andina Standard · 1 nuit avec petit-déj</td>
+        <td>✅ Prix Booking</td>
+        <td class="montant">91</td>
+      </tr>
+      <tr>
+        <td>Hôtel Arequipa</td>
+        <td>La Hostería Boutique · 2 nuits avec petit-déj</td>
+        <td>✅ Prix Booking</td>
+        <td class="montant">192</td>
+      </tr>
+      <tr>
+        <td>Hôtel Cusco (J5 + J7)</td>
+        <td>Monasterio San Pedro · 2 nuits avec petit-déj</td>
+        <td>✅ Prix Booking</td>
+        <td class="montant">162</td>
+      </tr>
+      <tr>
+        <td>Hôtel Ollantaytambo</td>
+        <td>El Albergue · 1 nuit avec petit-déj (variante avec MP)</td>
+        <td>✅ Prix Booking</td>
+        <td class="montant">256</td>
+      </tr>
+      <tr>
+        <td>Hôtel La Paz</td>
+        <td>Stannum Boutique & Spa · 2 nuits avec petit-déj</td>
+        <td>✅ Prix Booking</td>
+        <td class="montant">227</td>
+      </tr>
+      <tr>
+        <td>Hôtel San Pedro de Atacama</td>
+        <td>Hotel La Aldea · 2 nuits avec petit-déj</td>
+        <td>✅ Prix Booking</td>
+        <td class="montant">267</td>
+      </tr>
+      <tr>
+        <td>Hôtel Lima</td>
+        <td>Tierra Viva Miraflores · 1 nuit avec petit-déj</td>
+        <td>✅ Prix Booking</td>
+        <td class="montant">75</td>
+      </tr>
       <tr class="total">
-        <td colspan="3">Total confirmé pour les vols domestiques (sur 3 segments)</td>
-        <td class="montant">~694</td>
+        <td colspan="3">Total confirmé (vols domestiques + 11 nuits d'hôtel)</td>
+        <td class="montant">~1 964</td>
       </tr>
     </tbody>
   </table>
 
-  <p style="margin-top: 1.5rem; color: var(--texto-soft); font-style: italic;">Reste à chiffrer : vol Tacna → Lima, hôtels (8 nuits payantes), tour Uyuni 4 jours, bus longue distance, activités phares. Ces lignes seront ajoutées au tableau au fur et à mesure des réservations.</p>
+  <p style="margin-top: 1.5rem; color: var(--texto-soft); font-style: italic;">Reste à chiffrer : vol Tacna → Lima, tour Uyuni 3 jours, bus longue distance, activités phares (Nazca, MP conditionnel, Cholitas, SPACE Obs, Puritama). Ces lignes seront ajoutées au tableau au fur et à mesure des réservations.</p>
 </section>
 
 <section id="taches">
@@ -1209,14 +1389,14 @@
       <ul>
         <li>Vols intercontinentaux Madrid ↔ Lima réservés (IB6660 et IB0124)</li>
         <li>Itinéraire 21 jours défini</li>
-        <li>9 hôtels shortlistés et choisis</li>
+        <li>8 hôtels shortlistés, choisis, prix Booking confirmés (1 270 CHF total avec petits-déj)</li>
         <li>Compagnies de bus validées (Cruz del Sur, Cisne Bus, Frontera del Norte)</li>
         <li>Compagnies vols domestiques choisies (LATAM, Avianca)</li>
         <li>Prix trouvés pour Arequipa → Cusco et Cusco → La Paz</li>
         <li>Activités identifiées (AeroParacas, Red Cap, SPACE Obs, Puritama)</li>
         <li>Email préparation médicale envoyé à mamie</li>
         <li>Devis demandé à 8 agences pour le tour Uyuni</li>
-        <li>2 premiers devis Uyuni reçus (Ruta Verde, Howlanders)</li>
+        <li>3 premiers devis Uyuni reçus et comparés (Ruta Verde, Howlanders, Joker Expedition)</li>
         <li>Site web partagé avec mamie</li>
       </ul>
     </div>
@@ -1226,7 +1406,7 @@
       <ul>
         <li>Choix de la variante Cusco (avec ou sans Machu Picchu) — mamie</li>
         <li>Photo du passeport — mamie</li>
-        <li>6 devis Uyuni en attente (Pie Experiences, Aracari, Bolivia Milenaria, Joker Expedition, Andean Ways, Cordillera)</li>
+        <li>5 devis Uyuni à finaliser (4 agences sans réponse + Bolivia Milenaria sans prix)</li>
       </ul>
     </div>
 
@@ -1240,7 +1420,7 @@
         <li>Choisir l'agence Uyuni après réception des devis</li>
         <li>Réserver le tour privé Uyuni 4 jours</li>
         <li>Si variante avec Machu Picchu : réserver entrée + train Ollantaytambo</li>
-        <li>Réserver les 8 nuits d'hôtel (Booking)</li>
+        <li>Réserver les 11 nuits d'hôtel sur Booking (prix validés 29/4)</li>
         <li>Réserver les 3 bus Cruz del Sur (Lima → Nazca, Nazca → Arequipa)</li>
         <li>Réserver le bus Cisne Bus La Paz → Uyuni</li>
         <li>Réserver le bus Frontera del Norte San Pedro → Arica</li>
