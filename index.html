@@ -72,9 +72,11 @@
 
   /* Hero */
   .hero {
-    background: linear-gradient(135deg, var(--terra) 0%, var(--terra-dark) 50%, var(--azul-dark) 100%);
+    background:
+      linear-gradient(135deg, rgba(199,123,83,0.78) 0%, rgba(168,95,61,0.72) 50%, rgba(26,61,82,0.85) 100%),
+      url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Salar_Uyuni_au01.jpg/1280px-Salar_Uyuni_au01.jpg') center/cover no-repeat;
     color: var(--crema);
-    padding: 80px 5% 70px;
+    padding: 90px 5% 80px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -303,8 +305,52 @@
     transition: all 0.2s;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+  }
+  .card .card-photo {
+    width: calc(100% + 3rem);
+    margin: -1.5rem -1.5rem 1rem;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+    background: var(--crema-dark);
+    transition: filter 0.2s;
   }
   .card:hover { box-shadow: 0 4px 15px rgba(62,39,35,0.12); transform: translateY(-2px); }
+  .card:hover .card-photo { filter: brightness(1.05) saturate(1.1); }
+
+  /* Galerie aperçu */
+  .galerie {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.6rem;
+    margin: 2rem 0 0.5rem;
+  }
+  .galerie figure {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow: 0 1px 3px rgba(62,39,35,0.08);
+  }
+  .galerie figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s;
+  }
+  .galerie figure:hover img { transform: scale(1.05); }
+  .galerie figcaption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(26,61,82,0.85), transparent);
+    color: white;
+    padding: 0.8rem 0.9rem 0.6rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-style: italic;
+  }
   .card .ville {
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -651,6 +697,41 @@
     <li><span class="lieu">San Pedro de Atacama</span><span class="dates">18-20 septembre</span></li>
     <li><span class="lieu">Arica</span><span class="dates">21-24 septembre</span></li>
   </ol>
+
+  <div class="galerie">
+    <figure>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/L%C3%ADneas_de_Nazca%2C_Nazca%2C_Per%C3%BA%2C_2015-07-29%2C_DD_52.JPG/1280px-L%C3%ADneas_de_Nazca%2C_Nazca%2C_Per%C3%BA%2C_2015-07-29%2C_DD_52.JPG" alt="Le colibri de Nazca" loading="lazy">
+      <figcaption>Le colibri de Nazca</figcaption>
+    </figure>
+    <figure>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/In_Aerquipa_Peru%2C%E2%80%A6Plaza_de_Armas_%288443293545%29.jpg/1280px-In_Aerquipa_Peru%2C%E2%80%A6Plaza_de_Armas_%288443293545%29.jpg" alt="Plaza de Armas d'Arequipa avec la cathédrale" loading="lazy">
+      <figcaption>Plaza de Armas, Arequipa</figcaption>
+    </figure>
+    <figure>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Iglesia_de_la_Compa%C3%B1%C3%ADa_de_Jes%C3%BAs%2C_Plaza_de_Armas%2C_Cusco%2C_Per%C3%BA%2C_2015-07-31%2C_DD_74.JPG/1280px-Iglesia_de_la_Compa%C3%B1%C3%ADa_de_Jes%C3%BAs%2C_Plaza_de_Armas%2C_Cusco%2C_Per%C3%BA%2C_2015-07-31%2C_DD_74.JPG" alt="Plaza de Armas de Cusco" loading="lazy">
+      <figcaption>Plaza de Armas, Cusco</figcaption>
+    </figure>
+    <figure>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Salineras_de_Maras%2C_Maras%2C_Per%C3%BA%2C_2015-07-30%2C_DD_12.JPG/1280px-Salineras_de_Maras%2C_Maras%2C_Per%C3%BA%2C_2015-07-30%2C_DD_12.JPG" alt="Salinas de Maras" loading="lazy">
+      <figcaption>Salinas de Maras</figcaption>
+    </figure>
+    <figure>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Vista_del_centro_de_La_Paz.jpg/1280px-Vista_del_centro_de_La_Paz.jpg" alt="La Paz dans la cuvette des Andes" loading="lazy">
+      <figcaption>La Paz, ville-cuvette</figcaption>
+    </figure>
+    <figure>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Salar_Uyuni_au01.jpg/1280px-Salar_Uyuni_au01.jpg" alt="Hexagones du Salar d'Uyuni" loading="lazy">
+      <figcaption>Salar d'Uyuni</figcaption>
+    </figure>
+    <figure>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Valle_della_Luna_01.jpg/1280px-Valle_della_Luna_01.jpg" alt="Vallée de la Lune, Atacama" loading="lazy">
+      <figcaption>Vallée de la Lune, Atacama</figcaption>
+    </figure>
+    <figure>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/ElMorroDeArica.jpg/500px-ElMorroDeArica.jpg" alt="El Morro d'Arica" loading="lazy">
+      <figcaption>El Morro d'Arica</figcaption>
+    </figure>
+  </div>
 </section>
 
 <section id="variantes-mp">
@@ -1056,6 +1137,7 @@
 
   <div class="grid">
     <article class="card">
+      <img class="card-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/L%C3%ADneas_de_Nazca%2C_Nazca%2C_Per%C3%BA%2C_2015-07-29%2C_DD_52.JPG/1280px-L%C3%ADneas_de_Nazca%2C_Nazca%2C_Per%C3%BA%2C_2015-07-29%2C_DD_52.JPG" alt="Désert et lignes de Nazca" loading="lazy">
       <div class="ville">Nazca · 1 nuit</div>
       <h3>Casa Andina Standard</h3>
       <p class="description">Mid-range fiable de la chaîne Casa Andina, petit-déj inclus, eau chaude garantie, late check-out demandé pour le bus de nuit vers Arequipa.</p>
@@ -1063,6 +1145,7 @@
     </article>
 
     <article class="card">
+      <img class="card-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/In_Aerquipa_Peru%2C%E2%80%A6Plaza_de_Armas_%288443293545%29.jpg/1280px-In_Aerquipa_Peru%2C%E2%80%A6Plaza_de_Armas_%288443293545%29.jpg" alt="Cathédrale d'Arequipa" loading="lazy">
       <div class="ville">Arequipa · 2 nuits</div>
       <h3>Palla Boutique Hotel</h3>
       <p class="description">Boutique à 200m de la Plaza de Armas, score Booking 9.3+, terrasse rooftop avec vue sur le volcan Misti, piscine et salle de sport pour récupérer du bus de nuit. Petit-déjeuner inclus.</p>
@@ -1070,6 +1153,7 @@
     </article>
 
     <article class="card">
+      <img class="card-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Iglesia_de_la_Compa%C3%B1%C3%ADa_de_Jes%C3%BAs%2C_Plaza_de_Armas%2C_Cusco%2C_Per%C3%BA%2C_2015-07-31%2C_DD_74.JPG/1280px-Iglesia_de_la_Compa%C3%B1%C3%ADa_de_Jes%C3%BAs%2C_Plaza_de_Armas%2C_Cusco%2C_Per%C3%BA%2C_2015-07-31%2C_DD_74.JPG" alt="Cusco, Plaza de Armas" loading="lazy">
       <div class="ville">Cusco · 3 nuits</div>
       <h3>Hotel Monasterio San Pedro</h3>
       <p class="description">3*, pas en pente (rare à Cusco), chauffage présent, en face du Marché San Pedro. Demander chambre côté patio. Hôtel unique pour les 3 nuits Cusco · valises stables.</p>
@@ -1077,6 +1161,7 @@
     </article>
 
     <article class="card">
+      <img class="card-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Vista_del_centro_de_La_Paz.jpg/1280px-Vista_del_centro_de_La_Paz.jpg" alt="La Paz vue d'en haut" loading="lazy">
       <div class="ville">La Paz · 3 nuits</div>
       <h3>Madero Hotel & Suites · Suite Familiale</h3>
       <p class="description">4* dans le centre (Calle Mexico, 1822), score Booking 9. Suite familiale 45 m² avec 2 lits doubles, kitchenette pour le mate de coca, chauffage à gaz pour les nuits à 3 650 m. Terrasse panoramique au 7ᵉ étage. À pied de Plaza Murillo, San Francisco et Mercado de las Brujas.</p>
@@ -1084,12 +1169,14 @@
     </article>
 
     <article class="card">
+      <img class="card-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Salar_Uyuni_au01.jpg/1280px-Salar_Uyuni_au01.jpg" alt="Salar d'Uyuni en saison sèche" loading="lazy">
       <div class="ville">Salar d'Uyuni · 2 nuits</div>
       <h3>Hôtels du tour privé</h3>
       <p class="description">Hôtels chauffés inclus dans le tour 4×4 privé : Luna Salada sur le salar (J1) et Tayka del Desierto à 4 600 m (J2). Repas inclus, oxygène à bord du véhicule.</p>
     </article>
 
     <article class="card">
+      <img class="card-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Valle_della_Luna_01.jpg/1280px-Valle_della_Luna_01.jpg" alt="Vallée de la Lune, Atacama" loading="lazy">
       <div class="ville">San Pedro de Atacama · 2 nuits</div>
       <h3>Hotel Jardín Atacama</h3>
       <p class="description">À 5 min à pied de la Plaza, score Booking 8.9, chauffage fiable pour les nuits froides du désert. Astuce : douche idéalement avant 17h, l'eau chaude peut être inconstante en soirée.</p>
@@ -1097,12 +1184,14 @@
     </article>
 
     <article class="card">
+      <img class="card-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/ElMorroDeArica.jpg/500px-ElMorroDeArica.jpg" alt="El Morro d'Arica" loading="lazy">
       <div class="ville">Arica · 3 nuits</div>
-      <h3>Hébergement à Arica</h3>
-      <p class="description">Sur place, repos avant la dernière étape Lima.</p>
+      <h3>Chez de la famille</h3>
+      <p class="description">Hébergement chez de la famille à Arica · trois nuits de vraie pause après la traversée Bolivie-Atacama, avant la dernière étape Tacna et le vol vers Lima.</p>
     </article>
 
     <article class="card">
+      <img class="card-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Ciudad_De_Lima.jpg/1280px-Ciudad_De_Lima.jpg" alt="Lima vue de Miraflores" loading="lazy">
       <div class="ville">Lima · 1 nuit · dernière étape</div>
       <h3>Holiday Inn Lima Airport</h3>
       <p class="description">À 5 min en shuttle gratuit du terminal Jorge Chávez, service 24/7 toutes les 30 min. Choisi pour zéro stress le matin du retour : pas de transfert taxi, pas de bouchons. Petit-déjeuner buffet inclus.</p>
@@ -1117,6 +1206,7 @@
 
   <div class="grid">
     <article class="card">
+      <img class="card-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/L%C3%ADneas_de_Nazca%2C_Nazca%2C_Per%C3%BA%2C_2015-07-29%2C_DD_52.JPG/1280px-L%C3%ADneas_de_Nazca%2C_Nazca%2C_Per%C3%BA%2C_2015-07-29%2C_DD_52.JPG" alt="Le colibri de Nazca" loading="lazy">
       <div class="ville">6 septembre · Nazca</div>
       <h3>Survol des lignes de Nazca</h3>
       <p class="description">35 minutes de vol au-dessus des géoglyphes mystérieux. Compagnie réputée pour la sécurité.</p>
@@ -1124,6 +1214,7 @@
     </article>
 
     <article class="card">
+      <img class="card-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cholita_wrestling4_bolivia_Joel_Alvarez-2.jpg/1280px-Cholita_wrestling4_bolivia_Joel_Alvarez-2.jpg" alt="Cholitas luchadoras" loading="lazy">
       <div class="ville">13 septembre · La Paz</div>
       <h3>Cholitas wrestling 🥊</h3>
       <p class="description">Spectacle de catch théâtral à El Alto, dimanche après-midi. Pickup hôtel inclus.</p>
@@ -1131,12 +1222,14 @@
     </article>
 
     <article class="card">
+      <img class="card-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Salar_Uyuni_au01.jpg/1280px-Salar_Uyuni_au01.jpg" alt="Hexagones du Salar d'Uyuni" loading="lazy">
       <div class="ville">16 au 18 septembre</div>
       <h3>Tour Salar d'Uyuni privé · 3 jours</h3>
       <p class="description">4×4 privé Uyuni → San Pedro de Atacama. Salar, Isla Incahuasi, désert Siloli, Laguna Colorada, Laguna Verde. Détail des agences comparées juste en dessous.</p>
     </article>
 
     <article class="card">
+      <img class="card-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Valle_della_Luna_01.jpg/1280px-Valle_della_Luna_01.jpg" alt="Atacama, ciel et désert" loading="lazy">
       <div class="ville">19 septembre · San Pedro</div>
       <h3>SPACE Obs · soirée astro 🌌</h3>
       <p class="description">Tour astronomique en français avec Alain Maury, télescope de 115 cm. Ciels parmi les plus purs au monde.</p>
@@ -1144,6 +1237,7 @@
     </article>
 
     <article class="card">
+      <img class="card-photo" src="https://upload.wikimedia.org/wikipedia/commons/7/75/Termas-puritama-rgj-01.jpg" alt="Termas de Puritama, piscines naturelles" loading="lazy">
       <div class="ville">20 septembre · San Pedro</div>
       <h3>Termas de Puritama 🛁</h3>
       <p class="description">8 piscines naturelles 28 à 31°C dans un canyon. Réservation obligatoire en ligne.</p>
@@ -1292,7 +1386,7 @@
       <tr>
         <td>Hôtel Lima</td>
         <td>Holiday Inn Lima Airport · 1 nuit avec petit-déj · shuttle gratuit</td>
-        <td>✅ Prix Booking</td>
+        <td>✅ Réservé Booking</td>
         <td class="montant">83</td>
       </tr>
       <tr class="total">
@@ -1325,12 +1419,15 @@
         <li>Email préparation médicale envoyé à mamie</li>
         <li>Devis Uyuni reçus et comparés (4 agences) · Joker Expedition retenue, mail final envoyé</li>
         <li>Décision Cusco prise · variante sans Machu Picchu, programme Vallée Sacrée approfondie</li>
-        <li>Hôtel dernière nuit Lima choisi · Holiday Inn Lima Airport (shuttle gratuit)</li>
-        <li>Hôtel San Pedro de Atacama réservé · Jardín Atacama (Booking, 213 CHF, 2 nuits)</li>
-        <li>Hôtel Cusco réservé · Monasterio San Pedro (Booking, 184 CHF, 3 nuits)</li>
-        <li>Hôtel Arequipa réservé · Palla Boutique Hotel (Booking, 159 CHF, 2 nuits)</li>
-        <li>Hôtel La Paz réservé · Madero Hotel & Suites — Suite Familiale (Booking, 173 CHF, 3 nuits)</li>
+        <li><strong>Tous les hôtels réservés</strong> · Nazca · Arequipa · Cusco · La Paz · San Pedro · Lima (Arica = chez de la famille)</li>
         <li>Hôtel Nazca réservé · Casa Andina Standard (Booking, 81 CHF, 1 nuit)</li>
+        <li>Hôtel Arequipa réservé · Palla Boutique Hotel (Booking, 159 CHF, 2 nuits)</li>
+        <li>Hôtel Cusco réservé · Monasterio San Pedro (Booking, 184 CHF, 3 nuits)</li>
+        <li>Hôtel La Paz réservé · Madero Hotel & Suites — Suite Familiale (Booking, 173 CHF, 3 nuits)</li>
+        <li>Hôtel San Pedro de Atacama réservé · Jardín Atacama (Booking, 213 CHF, 2 nuits)</li>
+        <li>Hôtel Lima dernière nuit réservé · Holiday Inn Lima Airport (Booking, 83 CHF, shuttle gratuit 24/7)</li>
+        <li>Demandes spéciales en espagnol envoyées à chaque hôtel (calme, chauffage, late check-out, mamie convalescente)</li>
+        <li>Topo sécurité par étape rédigé · Guides de visite (13 fiches) prêts à imprimer</li>
         <li>Site web partagé avec mamie</li>
       </ul>
     </div>
@@ -1346,9 +1443,8 @@
     <div class="tasks-col todo">
       <h3><span class="pastille"></span>À faire — Arnaud</h3>
       <ul>
-        <li>Réserver le tour privé Uyuni avec Joker Expedition une fois les questions levées</li>
-        <li>Réserver les 11 nuits d'hôtel sur Booking (prix validés)</li>
-        <li>Réserver les 3 bus Cruz del Sur (Lima → Nazca, Nazca → Arequipa)</li>
+        <li>Confirmer le tour privé Uyuni avec Joker Expedition une fois les questions levées</li>
+        <li>Réserver les 2 bus Cruz del Sur (Lima → Nazca, Nazca → Arequipa)</li>
         <li>Réserver le bus Cisne Bus La Paz → Uyuni</li>
         <li>Réserver le bus Frontera del Norte San Pedro → Arica</li>
         <li>Réserver le survol AeroParacas</li>
