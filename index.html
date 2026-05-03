@@ -319,6 +319,65 @@
   .card:hover { box-shadow: 0 4px 15px rgba(62,39,35,0.12); transform: translateY(-2px); }
   .card:hover .card-photo { filter: brightness(1.05) saturate(1.1); }
 
+  /* Vidéos pays */
+  .videos-pays {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+  }
+  .videos-pays figure {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(62,39,35,0.08);
+    transition: all 0.2s;
+  }
+  .videos-pays figure:hover { box-shadow: 0 6px 18px rgba(62,39,35,0.14); transform: translateY(-2px); }
+  .videos-pays .video-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--azul-dark);
+  }
+  .videos-pays iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .videos-pays figcaption {
+    padding: 0.9rem 1.1rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--terra-dark);
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  .videos-pays figcaption .pays {
+    font-weight: 600;
+  }
+  .videos-pays figcaption .resume {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: var(--texto-soft);
+    font-style: italic;
+  }
+  .video-jour {
+    margin: 1rem 0 0.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(62,39,35,0.08);
+    aspect-ratio: 16 / 9;
+    position: relative;
+    background: var(--azul-dark);
+  }
+  .video-jour iframe {
+    position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+  }
+
   /* Galerie aperçu */
   .galerie {
     display: grid;
@@ -660,6 +719,7 @@
 
 <nav class="index">
   <ul>
+    <li><a href="#reverie">Inspiration</a></li>
     <li><a href="#apercu">Aperçu</a></li>
     <li><a href="#altitudes">Altitudes</a></li>
     <li><a href="#jour-par-jour">Jour par jour</a></li>
@@ -683,6 +743,32 @@
 </header>
 
 <main>
+
+<section id="reverie">
+  <h2>Pour rêver un peu</h2>
+  <p class="section-sub">Trois pays, trois ambiances. À regarder le soir au calme.</p>
+
+  <div class="videos-pays">
+    <figure>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube-nocookie.com/embed/4TzeKsipHts" title="Pérou — vidéo d'inspiration" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <figcaption><span class="pays">Pérou 🇵🇪</span><span class="resume">Andes, Cusco, Vallée Sacrée</span></figcaption>
+    </figure>
+    <figure>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube-nocookie.com/embed/4TzeKsipHts" title="Bolivie — vidéo d'inspiration" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <figcaption><span class="pays">Bolivie 🇧🇴</span><span class="resume">La Paz, Salar d'Uyuni</span></figcaption>
+    </figure>
+    <figure>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube-nocookie.com/embed/4TzeKsipHts" title="Chili — vidéo d'inspiration" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <figcaption><span class="pays">Chili 🇨🇱</span><span class="resume">Atacama, Arica, océan</span></figcaption>
+    </figure>
+  </div>
+</section>
 
 <section id="apercu">
   <h2>Le voyage en un coup d'œil</h2>
@@ -919,6 +1005,9 @@
   <details class="jour" id="variantes-cusco">
     <summary><span class="jour-num">6</span><span class="jour-titre"><span class="date">Jeudi 10 septembre</span>Vallée Sacrée à contresens (anti-foule)</span></summary>
     <div class="jour-contenu">
+      <div class="video-jour">
+        <iframe src="https://www.youtube-nocookie.com/embed/eFaCI0GcvaE" title="Vallée Sacrée des Incas" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
       <p style="margin-bottom: 1rem;">Boucle journée avec <strong>chauffeur privé</strong>, dans l'ordre inversé pour éviter la foule (les groupes touristiques font Cusco → Pisac → Maras → Ollanta, on fait l'inverse).</p>
       <ul class="activites">
         <li><span class="heure">06:45</span>Lever, petit-déjeuner rapide</li>
