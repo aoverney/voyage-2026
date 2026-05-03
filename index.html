@@ -336,17 +336,34 @@
   .videos-pays figure:hover { box-shadow: 0 6px 18px rgba(62,39,35,0.14); transform: translateY(-2px); }
   .videos-pays .video-wrap {
     position: relative;
+    display: block;
     width: 100%;
     aspect-ratio: 16 / 9;
     background: var(--azul-dark);
+    overflow: hidden;
+    cursor: pointer;
   }
-  .videos-pays iframe {
-    position: absolute;
-    inset: 0;
+  .videos-pays .video-wrap img {
     width: 100%;
     height: 100%;
-    border: 0;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s, filter 0.2s;
   }
+  .videos-pays .video-wrap::after {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23C77B53' d='M8 5v14l11-7z'/></svg>") center/30px no-repeat;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    transition: transform 0.2s, background-color 0.2s;
+    pointer-events: none;
+  }
+  .videos-pays .video-wrap:hover img { transform: scale(1.04); filter: brightness(0.92); }
+  .videos-pays .video-wrap:hover::after { transform: translate(-50%, -50%) scale(1.1); }
   .videos-pays figcaption {
     padding: 0.9rem 1.1rem;
     font-family: 'Playfair Display', serif;
@@ -366,6 +383,7 @@
     font-style: italic;
   }
   .video-jour {
+    display: block;
     margin: 1rem 0 0.5rem;
     border-radius: 8px;
     overflow: hidden;
@@ -373,10 +391,26 @@
     aspect-ratio: 16 / 9;
     position: relative;
     background: var(--azul-dark);
+    cursor: pointer;
   }
-  .video-jour iframe {
-    position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+  .video-jour img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.3s, filter 0.2s;
   }
+  .video-jour::after {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23C77B53' d='M8 5v14l11-7z'/></svg>") center/30px no-repeat;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    transition: transform 0.2s;
+    pointer-events: none;
+  }
+  .video-jour:hover img { transform: scale(1.04); filter: brightness(0.92); }
+  .video-jour:hover::after { transform: translate(-50%, -50%) scale(1.1); }
 
   /* Galerie aperçu */
   .galerie {
@@ -750,21 +784,21 @@
 
   <div class="videos-pays">
     <figure>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/tRCGBX0l8VY" title="Pérou — vidéo d'inspiration" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      </div>
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=tRCGBX0l8VY" target="_blank" rel="noopener" aria-label="Lire la vidéo Pérou sur YouTube">
+        <img src="https://img.youtube.com/vi/tRCGBX0l8VY/maxresdefault.jpg" alt="Vignette vidéo Pérou" loading="lazy">
+      </a>
       <figcaption><span class="pays">Pérou 🇵🇪</span><span class="resume">Andes, Cusco, Vallée Sacrée</span></figcaption>
     </figure>
     <figure>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/VhGvc4Yu9r0" title="Bolivie — vidéo d'inspiration" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      </div>
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=VhGvc4Yu9r0" target="_blank" rel="noopener" aria-label="Lire la vidéo Bolivie sur YouTube">
+        <img src="https://img.youtube.com/vi/VhGvc4Yu9r0/maxresdefault.jpg" alt="Vignette vidéo Bolivie" loading="lazy">
+      </a>
       <figcaption><span class="pays">Bolivie 🇧🇴</span><span class="resume">La Paz, Salar d'Uyuni</span></figcaption>
     </figure>
     <figure>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/4TzeKsipHts" title="Chili — vidéo d'inspiration" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      </div>
+      <a class="video-wrap" href="https://www.youtube.com/watch?v=4TzeKsipHts" target="_blank" rel="noopener" aria-label="Lire la vidéo Chili sur YouTube">
+        <img src="https://img.youtube.com/vi/4TzeKsipHts/maxresdefault.jpg" alt="Vignette vidéo Chili" loading="lazy">
+      </a>
       <figcaption><span class="pays">Chili 🇨🇱</span><span class="resume">Atacama, Arica, océan</span></figcaption>
     </figure>
   </div>
@@ -1005,9 +1039,9 @@
   <details class="jour" id="variantes-cusco">
     <summary><span class="jour-num">6</span><span class="jour-titre"><span class="date">Jeudi 10 septembre</span>Vallée Sacrée à contresens (anti-foule)</span></summary>
     <div class="jour-contenu">
-      <div class="video-jour">
-        <iframe src="https://www.youtube-nocookie.com/embed/eFaCI0GcvaE" title="Vallée Sacrée des Incas" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      </div>
+      <a class="video-jour" href="https://www.youtube.com/watch?v=eFaCI0GcvaE" target="_blank" rel="noopener" aria-label="Lire la vidéo Vallée Sacrée sur YouTube">
+        <img src="https://img.youtube.com/vi/eFaCI0GcvaE/maxresdefault.jpg" alt="Vignette vidéo Vallée Sacrée" loading="lazy">
+      </a>
       <p style="margin-bottom: 1rem;">Boucle journée avec <strong>chauffeur privé</strong>, dans l'ordre inversé pour éviter la foule (les groupes touristiques font Cusco → Pisac → Maras → Ollanta, on fait l'inverse).</p>
       <ul class="activites">
         <li><span class="heure">06:45</span>Lever, petit-déjeuner rapide</li>
