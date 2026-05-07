@@ -712,6 +712,26 @@
     border-top: 2px solid var(--terra);
   }
   .table-budget .total .montant { color: var(--terra-dark); }
+  .table-budget tr.budget-2pax td { background: rgba(212, 165, 116, 0.18); }
+  .table-budget tr.budget-2pax:hover td { background: rgba(212, 165, 116, 0.28); }
+  .budget-cat {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    color: var(--terra-dark);
+    margin: 2.5rem 0 0.5rem 0;
+    font-weight: 600;
+  }
+  .budget-cat:first-of-type { margin-top: 1.5rem; }
+  .budget-recap {
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    background: var(--crema);
+    border-left: 4px solid var(--terra);
+    border-radius: 8px;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  .budget-recap strong { color: var(--terra-dark); }
 
   /* Tâches */
   .tasks {
@@ -967,6 +987,7 @@
     <li><a href="#budget">Budget</a></li>
     <li><a href="#taches">Tâches</a></li>
     <li><a href="#documents">Documents</a></li>
+    <li><a href="#comment-on-voyage">Comment on voyage</a></li>
     <li><a href="#contacts">Numéros utiles</a></li>
   </ul>
 </nav>
@@ -1666,8 +1687,9 @@
 
 <section id="budget">
   <h2>Budget · ce qui est confirmé</h2>
-  <p class="section-sub">Tableau des éléments dont les prix sont connus. Tout le reste est en cours de chiffrage.</p>
+  <p class="section-sub">Trois blocs : transports, nuitées, activités. Les lignes 🟡 sont encore au tarif 2 pax (Arnaud + Carole) parce que la part de Nina &amp; David n'est pas encore consolidée — soit la chambre additionnelle reste à confirmer, soit on attend les codes de réservation.</p>
 
+  <h3 class="budget-cat">🚌 Transports</h3>
   <table class="table-budget">
     <thead>
       <tr>
@@ -1680,84 +1702,194 @@
     <tbody>
       <tr>
         <td>Vol intercontinental aller</td>
-        <td>IB6660 · Madrid → Lima · 5/9</td>
+        <td>IB6660 · Madrid → Lima · 5/9 · 4 pax</td>
         <td>✅ Réservé</td>
         <td class="montant">déjà payé</td>
       </tr>
       <tr>
         <td>Vol intercontinental retour</td>
-        <td>IB0124 · Lima → Madrid · 25/9</td>
+        <td>IB0124 · Lima → Madrid · 25/9 · 4 pax</td>
         <td>✅ Réservé</td>
         <td class="montant">déjà payé</td>
       </tr>
-      <tr>
+      <tr class="budget-2pax">
         <td>Vol Arequipa → Cusco</td>
-        <td>LATAM LA2321 · 9/9 · 14h00 · sièges 20A/20B</td>
-        <td>✅ Réservé (DJRSXI)</td>
+        <td>LATAM LA2321 · 9/9 · A+C sièges 20A/B (DJRSXI) · N+D réservés 5/5 (codes à consolider)</td>
+        <td>🟡 base 2 pax</td>
         <td class="montant">218</td>
       </tr>
-      <tr>
+      <tr class="budget-2pax">
         <td>Vol Cusco → La Paz</td>
-        <td>Avianca AV105 · 12/9 · 12h30 · sièges 4E/4K</td>
-        <td>✅ Réservé (CC68Y9)</td>
+        <td>Avianca AV105 · 12/9 · A+C sièges 4E/K (CC68Y9) · N+D réservés 5/5</td>
+        <td>🟡 base 2 pax</td>
         <td class="montant">467</td>
       </tr>
-      <tr>
+      <tr class="budget-2pax">
         <td>Vol Tacna → Lima</td>
-        <td>LATAM LA2068 · 24/9 · 16h20 · sièges 9E/9F</td>
-        <td>✅ Réservé (HZRLIJ)</td>
+        <td>LATAM LA2068 · 24/9 · A+C sièges 9E/F (HZRLIJ) · N+D réservés 5/5</td>
+        <td>🟡 base 2 pax</td>
         <td class="montant">239</td>
       </tr>
       <tr>
-        <td>Hôtel Nazca</td>
-        <td>Casa Andina Standard · 1 nuit avec petit-déj</td>
-        <td>✅ Réservé Booking</td>
-        <td class="montant">81</td>
+        <td>Bus Cruz del Sur Lima → Nazca</td>
+        <td>5/9 · 4 sièges front upper-deck · 368 PEN</td>
+        <td>✅ Réservé</td>
+        <td class="montant">88</td>
       </tr>
       <tr>
-        <td>Hôtel Arequipa</td>
-        <td>Palla Boutique Hotel · 2 nuits avec petit-déj · score 9.3</td>
-        <td>✅ Réservé Booking</td>
-        <td class="montant">159</td>
+        <td>Bus Cruz del Sur Nazca → Arequipa</td>
+        <td>6/9 · 4 Suites 160° pont haut · 568 PEN</td>
+        <td>✅ Réservé</td>
+        <td class="montant">136</td>
       </tr>
       <tr>
-        <td>Hôtel Cusco</td>
-        <td>Monasterio San Pedro · 3 nuits avec petit-déj</td>
-        <td>✅ Réservé Booking</td>
-        <td class="montant">184</td>
+        <td>Bus La Paz → Uyuni</td>
+        <td>15/9 · Cisne Bus · 4 sièges</td>
+        <td>⚪ TODO juin</td>
+        <td class="montant">~80–140</td>
       </tr>
       <tr>
-        <td>Hôtel La Paz</td>
-        <td>Madero Hotel & Suites · Suite Familiale 3 nuits avec petit-déj · score 9</td>
-        <td>✅ Réservé Booking</td>
-        <td class="montant">173</td>
+        <td>Bus San Pedro → Arica</td>
+        <td>20/9 · Frontera del Norte · 4 sièges</td>
+        <td>⚪ TODO juin</td>
+        <td class="montant">~80–130</td>
       </tr>
       <tr>
-        <td>Hôtel San Pedro de Atacama</td>
-        <td>Hotel Jardín Atacama · 2 nuits avec petit-déj · score 8.9</td>
-        <td>✅ Réservé Booking</td>
-        <td class="montant">213</td>
+        <td>Transfert privé aéroport Cusco</td>
+        <td>9/9 · 4 pax + bagages · S/40 (réglé sur place)</td>
+        <td>✅ Confirmé Monasterio</td>
+        <td class="montant">10</td>
       </tr>
       <tr>
-        <td>Hôtel Lima</td>
-        <td>Holiday Inn Lima Airport · 1 nuit avec petit-déj · shuttle gratuit</td>
-        <td>✅ Réservé Booking</td>
-        <td class="montant">83</td>
+        <td>Transfert El Alto → Madero</td>
+        <td>12/9 · 4 pax dans 2 voitures · 150 BOB (réglé sur place)</td>
+        <td>✅ Confirmé Madero</td>
+        <td class="montant">~20</td>
       </tr>
       <tr>
-        <td>Tour Salar Uyuni → San Pedro</td>
-        <td>Joker Expedition · 3 jours / 2 nuits · <strong>4 pax tout inclus</strong> (4 380 USD)</td>
-        <td>✅ Acompte payé · solde août</td>
-        <td class="montant">~3 635</td>
+        <td>Camioneta privée Vallée Sacrée</td>
+        <td>10/9 · 4 pax journée complète · S/400 (réglé sur place)</td>
+        <td>✅ Confirmé Monasterio</td>
+        <td class="montant">96</td>
       </tr>
       <tr class="total">
-        <td colspan="3">Total confirmé (3 vols domestiques + 12 nuits d'hôtel + tour Salar 4 pax)</td>
-        <td class="montant">~5 452</td>
+        <td colspan="3">Sous-total transports (vols A+C + bus + transferts, hors estimations bus juin)</td>
+        <td class="montant">~1 274</td>
       </tr>
     </tbody>
   </table>
 
-  <p style="margin-top: 1.5rem; color: var(--texto-soft); font-style: italic;">Tableau ci-dessus : vols et hôtels en base 2 voyageurs (Arnaud + mamie) ; tour Joker en base 4 (1 095 USD/pers, optimisation -19 % grâce au groupe). Avec Nina &amp; David qui rejoignent : il faudra ajouter une chambre double par hôtel (sauf Madero où la Suite Familiale pourrait peut-être accueillir 4 — à vérifier) et leurs propres billets pour les 3 vols domestiques. Reste à chiffrer : bus longue distance (Cruz del Sur, Cisne, Frontera del Norte) et activités (Nazca, Cholitas, SPACE Obs, Puritama, chauffeur Vallée Sacrée).</p>
+  <h3 class="budget-cat">🛏 Nuitées</h3>
+  <table class="table-budget">
+    <thead>
+      <tr>
+        <th>Hôtel</th>
+        <th>Détail</th>
+        <th>Statut</th>
+        <th style="text-align: right;">Coût (CHF)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Casa Andina Standard Nazca</td>
+        <td>1 nuit · 4 pax · A+C 81 (Booking) + N+D 84 (Booking 7/5, 101 USD non remboursable)</td>
+        <td>✅ Confirmé 4 pax</td>
+        <td class="montant">~165</td>
+      </tr>
+      <tr>
+        <td>Palla Boutique Arequipa</td>
+        <td>2 nuits · 4 pax · A+C 159 (Booking) + N+D 204 USD ≈ 169 (résa directe hôtel) · petit-déj inclus · score 9.3</td>
+        <td>✅ Confirmé 4 pax</td>
+        <td class="montant">~328</td>
+      </tr>
+      <tr>
+        <td>Monasterio San Pedro Cusco</td>
+        <td>3 nuits · 4 pax · A+C 184 (Booking) + N+D 199 (cama matrimonial, même tarif) · acompte 50 % à régler</td>
+        <td>✅ Confirmé Monasterio</td>
+        <td class="montant">383</td>
+      </tr>
+      <tr>
+        <td>Madero La Paz</td>
+        <td>3 nuits · 4 pax · Suite Familiale A+C 173 (Booking) + chambre N+D 123 · petit-déj inclus</td>
+        <td>✅ Confirmé Madero</td>
+        <td class="montant">296</td>
+      </tr>
+      <tr>
+        <td>Hotel Jardín Atacama</td>
+        <td>2 nuits · 4 pax · A+C 213 (Booking) + N+D 257 (Booking 5/5, Fiestas Patrias) · score 8.9</td>
+        <td>✅ Confirmé 4 pax</td>
+        <td class="montant">470</td>
+      </tr>
+      <tr>
+        <td>Arica</td>
+        <td>4 nuits · 4 pax · chez le grand-père d'Arnaud</td>
+        <td>✅ Gratuit</td>
+        <td class="montant">0</td>
+      </tr>
+      <tr class="budget-2pax">
+        <td>Holiday Inn Lima Airport</td>
+        <td>1 nuit · A+C avec petit-déj + shuttle gratuit · N+D accord verbal en attente de confirmation</td>
+        <td>🟡 base 2 pax</td>
+        <td class="montant">83</td>
+      </tr>
+      <tr class="total">
+        <td colspan="3">Sous-total nuitées (Holiday Inn N+D non inclus)</td>
+        <td class="montant">~1 725</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="budget-cat">🎯 Activités</h3>
+  <table class="table-budget">
+    <thead>
+      <tr>
+        <th>Activité</th>
+        <th>Détail</th>
+        <th>Statut</th>
+        <th style="text-align: right;">Coût (CHF)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tour Salar Joker Expedition</td>
+        <td>16-18/9 · 3 jours / 2 nuits · 4 pax tout inclus · 4 380 USD (1 095/pers, -19 % vs 2 pax)</td>
+        <td>✅ Acompte 50 % payé · solde août</td>
+        <td class="montant">~3 635</td>
+      </tr>
+      <tr>
+        <td>SPACE Obs · soirée astro privée FR</td>
+        <td>19/9 · 4 pax · forfait 500 000 CLP (~125/pers) · tour privé en français</td>
+        <td>✅ Confirmé groupe · attente accusé Alejandra</td>
+        <td class="montant">~500</td>
+      </tr>
+      <tr>
+        <td>Survol lignes Nazca AeroParacas</td>
+        <td>6/9 · 4 pax · ~90 USD/pers</td>
+        <td>⚪ TODO</td>
+        <td class="montant">~300–360</td>
+      </tr>
+      <tr>
+        <td>Cholitas wrestling Red Cap</td>
+        <td>13/9 · 4 pax · ~25-30 USD/pers · pickup El Alto inclus</td>
+        <td>⚪ TODO</td>
+        <td class="montant">~100–130</td>
+      </tr>
+      <tr>
+        <td>Termas de Puritama</td>
+        <td>San Pedro · 4 pax · ~50-60 USD/pers + transferts</td>
+        <td>⚪ TODO juillet</td>
+        <td class="montant">~220–280</td>
+      </tr>
+      <tr class="total">
+        <td colspan="3">Sous-total activités (confirmé + estimations)</td>
+        <td class="montant">~4 755 – 4 905</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="budget-recap">
+    <strong>Estimation globale ~7 800 CHF dans le tableau</strong>, plus environ <strong>1 200–2 000 CHF pour les repas et la marge imprévus</strong> (les petits-déj sont inclus dans la plupart des hôtels, le tour Joker couvre tous les repas pendant 3 jours, et 4 jours à Arica sont quasi-gratuits chez le grand-père d'Arnaud). Cible réaliste totale : <strong>~9 400 CHF pour le groupe</strong>, soit <strong>~2 350 CHF/personne</strong>.
+  </div>
 </section>
 
 <section id="taches">
@@ -1831,6 +1963,24 @@
     <a href="https://drive.google.com/drive/folders/1QKIqbvTeu2AGkxSddzORig_Hx8zeAqUB?usp=sharing" target="_blank" rel="noopener" style="display: inline-block; padding: 0.9rem 1.8rem; background: var(--terra); color: white; border-radius: 6px; font-weight: 600; font-size: 1.05rem; text-decoration: none;">Ouvrir le dossier Drive →</a>
     <p style="margin: 1.5rem 0 0 0; padding: 1rem 1.2rem; background: var(--crema); border-radius: 6px; color: var(--texto); font-size: 0.95rem; text-align: left;"><strong>David et Nina</strong>, glissez dans ce dossier vos propres billets d'avion (vous avez vos réservations à part) ainsi que tout autre document utile — assurance voyage, copie de passeport, carnet de vaccination. L'idée : qu'on ait tout regroupé au même endroit en cas de pépin sur place.</p>
     <p style="margin: 1rem 0 0 0; color: var(--texto-soft); font-size: 0.9rem; font-style: italic;">Astuce mobile : dans l'app Google Drive, ouvrir le dossier puis « Disponible hors ligne » sur chaque fichier important — vous pourrez consulter vos billets sans réseau au terminal de bus ou à l'aéroport.</p>
+  </div>
+</section>
+
+<section id="comment-on-voyage">
+  <h2>Comment on voyage</h2>
+  <p class="section-sub">Quelques habitudes simples pour qu'on profite tranquillement de chaque étape.</p>
+
+  <div style="background: white; border-radius: 10px; padding: 2rem 2.5rem; box-shadow: 0 1px 3px rgba(62,39,35,0.08);">
+    <ul style="list-style: none; padding: 0; margin: 0;">
+      <li style="padding: 0.85rem 0; border-bottom: 1px solid var(--crema-dark); line-height: 1.6;"><strong>Téléphone discret en transit.</strong> On le sort pour la photo, on le range en remontant dans le bus ou le micro.</li>
+      <li style="padding: 0.85rem 0; border-bottom: 1px solid var(--crema-dark); line-height: 1.6;"><strong>Sac devant</strong> dans les marchés, les transports et les foules. Geste anodin, ça change tout.</li>
+      <li style="padding: 0.85rem 0; border-bottom: 1px solid var(--crema-dark); line-height: 1.6;"><strong>Bijoux, montres voyantes et tee-shirt « I love Cusco » au tiroir.</strong> On part avec le sobre.</li>
+      <li style="padding: 0.85rem 0; border-bottom: 1px solid var(--crema-dark); line-height: 1.6;"><strong>Cash réparti.</strong> Une petite coupure accessible, le reste dans une poche planquée. Retraits dans une banque, pas un ATM de rue.</li>
+      <li style="padding: 0.85rem 0; border-bottom: 1px solid var(--crema-dark); line-height: 1.6;"><strong>Taxis via app uniquement</strong> dans les villes (Uber, Cabify, InDriver) ; transferts pré-arrangés ailleurs. Jamais le taxi qui hèle.</li>
+      <li style="padding: 0.85rem 0; border-bottom: 1px solid var(--crema-dark); line-height: 1.6;"><strong>Verres sous surveillance</strong> dans les bars (Lima, La Paz surtout).</li>
+      <li style="padding: 0.85rem 0; line-height: 1.6;"><strong>Rien dans la valise qu'on serait triste de ne pas ramener.</strong> Bijou de famille, carnet, l'objet qui a une histoire — ça reste à la maison.</li>
+    </ul>
+    <p style="margin: 1.8rem 0 0 0; padding-top: 1.5rem; border-top: 2px solid var(--crema-dark); font-style: italic; color: var(--texto-soft); text-align: center; line-height: 1.6;">Pérou et Bolivie ne sont pas dangereux, juste pas un resort. La rue ne nous oublie pas comme un all-inclusive, et c'est aussi pour ça qu'on y va.</p>
   </div>
 </section>
 
