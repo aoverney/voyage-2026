@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
 <style>
   :root {
     --terra: #C77B53;
@@ -73,13 +75,18 @@
   /* Hero */
   .hero {
     background:
-      linear-gradient(135deg, rgba(199,123,83,0.78) 0%, rgba(168,95,61,0.72) 50%, rgba(26,61,82,0.85) 100%),
-      url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Salar_Uyuni_au01.jpg/1280px-Salar_Uyuni_au01.jpg') center/cover no-repeat;
+      linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.55) 100%),
+      url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Illimani_de_noche.jpg/1920px-Illimani_de_noche.jpg') center/cover no-repeat;
+    background-color: #0a0e1a;
     color: var(--crema);
-    padding: 90px 5% 80px;
+    min-height: 100vh;
+    padding: calc(60px + 5vh) 5% calc(40px + 5vh);
     text-align: center;
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .hero::before {
     content: "";
@@ -90,12 +97,53 @@
       repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(255,255,255,0.03) 30px, rgba(255,255,255,0.03) 31px);
     pointer-events: none;
   }
-  .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 38px;
+    border: 2px solid rgba(245,240,230,0.6);
+    border-radius: 12px;
+    pointer-events: none;
+  }
+  .hero-scroll-dot {
+    position: absolute;
+    bottom: 38px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    background: rgba(245,240,230,0.85);
+    border-radius: 2px;
+    animation: scrollHint 1.8s ease-in-out infinite;
+    z-index: 2;
+  }
+  @keyframes scrollHint {
+    0%, 100% { transform: translate(-50%, 0); opacity: 0.85; }
+    50% { transform: translate(-50%, 8px); opacity: 0.3; }
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    background: rgba(20, 14, 26, 0.38);
+    backdrop-filter: blur(10px) saturate(1.1);
+    -webkit-backdrop-filter: blur(10px) saturate(1.1);
+    border-radius: 22px;
+    padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 3rem);
+    border: 1px solid rgba(245, 240, 230, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  }
   .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-size: clamp(2.5rem, 6vw, 4.8rem);
     color: var(--crema);
     margin-bottom: 0.5rem;
     font-weight: 700;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.25);
   }
   .hero .accent-line { width: 80px; height: 3px; background: var(--ocre); margin: 1.5rem auto; }
   .hero .subtitle {
@@ -111,7 +159,158 @@
     text-transform: uppercase;
     opacity: 0.85;
   }
-  .hero .pour-mamie { margin-top: 2rem; font-style: italic; opacity: 0.8; font-size: 0.95rem; }
+  .hero .pour-mamie { margin-top: 2rem; font-style: italic; opacity: 0.85; font-size: 1rem; }
+
+  /* Compte à rebours */
+  .countdown {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+  }
+  .countdown-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(4rem, 10vw, 6.5rem);
+    font-weight: 700;
+    color: var(--ocre);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.3);
+    transition: color 0.3s;
+  }
+  .countdown-num.urgent { color: #FFD580; }
+  .countdown-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    color: var(--crema);
+  }
+
+  /* Carte */
+  .carte-wrap {
+    margin-top: 1rem;
+    height: 540px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(62,39,35,0.12), 0 1px 3px rgba(62,39,35,0.08);
+    background: var(--crema-dark);
+    position: relative;
+  }
+  #carte-leaflet { width: 100%; height: 100%; }
+  .carte-wrap .leaflet-container {
+    background: #EBE3D3;
+    font-family: 'Inter', sans-serif;
+  }
+  .carte-wrap .leaflet-popup-content-wrapper {
+    background: var(--crema);
+    color: var(--texto);
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(62,39,35,0.18);
+  }
+  .carte-wrap .leaflet-popup-tip { background: var(--crema); }
+  .carte-wrap .leaflet-popup-content { margin: 14px 16px; line-height: 1.5; }
+  .carte-wrap .leaflet-popup-content h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--terra-dark);
+    font-size: 1.15rem;
+    margin-bottom: 0.3rem;
+  }
+  .carte-wrap .leaflet-popup-content .popup-dates {
+    font-size: 0.85rem;
+    color: var(--texto-soft);
+    margin-bottom: 0.4rem;
+  }
+  .carte-wrap .leaflet-popup-content .popup-hotel {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  .carte-wrap .leaflet-popup-content a {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .etape-pin {
+    background: var(--terra-dark);
+    color: var(--crema);
+    width: 32px;
+    height: 32px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    border: 2px solid var(--crema);
+    box-shadow: 0 2px 6px rgba(62,39,35,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .etape-pin span { transform: rotate(45deg); }
+
+  /* Climat */
+  .climat-grid {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .climat-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.2rem 1rem;
+    box-shadow: 0 1px 3px rgba(62,39,35,0.08);
+    text-align: center;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .climat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(62,39,35,0.12);
+  }
+  .climat-card h3 {
+    font-size: 1rem;
+    color: var(--terra-dark);
+    margin-bottom: 0.2rem;
+  }
+  .climat-card .climat-altitude {
+    font-size: 0.75rem;
+    color: var(--texto-soft);
+    margin-bottom: 0.6rem;
+  }
+  .climat-card .climat-icon {
+    font-size: 2rem;
+    margin: 0.4rem 0;
+    line-height: 1;
+  }
+  .climat-card .climat-temp {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--texto);
+    margin-bottom: 0.2rem;
+  }
+  .climat-card .climat-temp .temp-min { color: var(--azul); }
+  .climat-card .climat-temp .temp-max { color: var(--rouge); }
+  .climat-card .climat-temp .temp-sep { color: var(--gris); margin: 0 0.2rem; }
+  .climat-card .climat-detail {
+    font-size: 0.78rem;
+    color: var(--texto-soft);
+    margin-top: 0.3rem;
+  }
+  .climat-card .climat-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: var(--ocre);
+    color: var(--texto);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+  }
 
   /* Sections */
   main { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
@@ -737,7 +936,9 @@
     nav.index { padding: 0.5rem 5%; }
     nav.index ul { gap: 0.2rem 0.8rem; }
     nav.index a { font-size: 0.8rem; }
-    .hero { padding: 60px 5% 50px; }
+    .hero { padding: 80px 5% 70px; }
+    .countdown { margin-top: 2rem; }
+    .carte-wrap { height: 420px; }
     section { padding: 50px 0; }
     .a-trancher { margin: 30px 5% 0; padding: 25px 20px; }
     .jour summary { padding: 1rem; }
@@ -753,6 +954,8 @@
 
 <nav class="index">
   <ul>
+    <li><a href="#carte">Carte</a></li>
+    <li><a href="#climat">Climat</a></li>
     <li><a href="#reverie">Inspiration</a></li>
     <li><a href="#apercu">Aperçu</a></li>
     <li><a href="#altitudes">Altitudes</a></li>
@@ -775,10 +978,27 @@
     <p class="subtitle">Notre voyage du 5 au 25 septembre 2026</p>
     <p class="meta">21 jours · Lima → Arica → Lima · 4 voyageurs</p>
     <p class="pour-mamie">Une aventure à quatre · le ciel des Andes, le sel d'Uyuni, les étoiles d'Atacama, et tout le temps qu'il faut.</p>
+    <div class="countdown" id="countdown" aria-live="polite">
+      <span class="countdown-num" id="countdown-num">—</span>
+      <span class="countdown-label" id="countdown-label">jours avant le départ</span>
+    </div>
   </div>
+  <div class="hero-scroll-dot" aria-hidden="true"></div>
 </header>
 
 <main>
+
+<section id="carte">
+  <h2>L'itinéraire</h2>
+  <p class="section-sub">Lima → Arica, 9 escales, ~3500 km du Pacifique aux altiplanos. Clique sur un pin pour voir les dates et l'hôtel.</p>
+  <div class="carte-wrap"><div id="carte-leaflet" role="img" aria-label="Carte interactive de l'itinéraire Pérou-Bolivie-Chili"></div></div>
+</section>
+
+<section id="climat">
+  <h2>Le climat qui nous attend</h2>
+  <p class="section-sub" id="climat-sub">Moyennes de septembre par étape. À deux semaines du départ, on bascule sur les vraies prévisions.</p>
+  <div class="climat-grid" id="climat-grid"></div>
+</section>
 
 <section id="reverie">
   <h2>Pour rêver un peu</h2>
@@ -1630,6 +1850,240 @@
 </section>
 
 </main>
+
+<script>
+(function() {
+  'use strict';
+
+  const DEPART = new Date('2026-09-05T00:00:00');
+  const RETOUR = new Date('2026-09-25T23:59:59');
+  const MS_DAY = 86400000;
+
+  const ETAPES = [
+    { nom: 'Lima',                coords: [-12.0464, -77.0428], debut: '2026-09-05', fin: '2026-09-05', hotel: 'Casa Andina Standard',           ancre: '#jour-par-jour', altitude: 0,    climat: { min: 14, max: 19, pluie: 0,  icon: '🌫️', detail: 'garúa, gris doux'    } },
+    { nom: 'Paracas / Nazca',     coords: [-14.8350, -74.9395], debut: '2026-09-06', fin: '2026-09-06', hotel: 'Bus de nuit après le survol',     ancre: '#jour-par-jour', altitude: 590, climat: { min: 13, max: 26, pluie: 0,  icon: '☀️',  detail: 'désert sec, soleil' } },
+    { nom: 'Arequipa',            coords: [-16.4090, -71.5375], debut: '2026-09-07', fin: '2026-09-09', hotel: 'Palla Boutique Hotel',            ancre: '#jour-par-jour', altitude: 2335, climat: { min: 7,  max: 22, pluie: 0,  icon: '☀️',  detail: 'sec, ciel clair'    } },
+    { nom: 'Cusco',               coords: [-13.5319, -71.9675], debut: '2026-09-09', fin: '2026-09-12', hotel: 'Hotel Monasterio San Pedro',      ancre: '#jour-par-jour', altitude: 3400, climat: { min: 3,  max: 19, pluie: 10, icon: '🌤️', detail: 'frais nuit, soleil jour' } },
+    { nom: 'Vallée Sacrée',       coords: [-13.3081, -72.1180], debut: '2026-09-10', fin: '2026-09-10', hotel: 'Excursion depuis Cusco',          ancre: '#jour-par-jour', altitude: 2800, climat: { min: 5,  max: 21, pluie: 8,  icon: '🌤️', detail: 'doux à mi-journée'  } },
+    { nom: 'La Paz',              coords: [-16.5000, -68.1500], debut: '2026-09-12', fin: '2026-09-15', hotel: 'Madero Hotel & Suites · Suite Familiale', ancre: '#jour-par-jour', altitude: 3650, climat: { min: 1,  max: 16, pluie: 5,  icon: '🌤️', detail: 'sec, vent d\'altitude' } },
+    { nom: 'Salar d\'Uyuni',      coords: [-20.4636, -66.8253], debut: '2026-09-16', fin: '2026-09-18', hotel: 'Tour privé Joker · Luna Salada + Tayka del Desierto', ancre: '#jour-par-jour', altitude: 3660, climat: { min: -8, max: 17, pluie: 0,  icon: '❄️',  detail: 'nuits glaciales, ciel pur' } },
+    { nom: 'San Pedro de Atacama', coords: [-22.9098, -68.2003], debut: '2026-09-18', fin: '2026-09-20', hotel: 'Hotel Jardín Atacama',           ancre: '#jour-par-jour', altitude: 2410, climat: { min: -2, max: 22, pluie: 0,  icon: '☀️',  detail: 'soleil pur, nuits froides' } },
+    { nom: 'Arica',               coords: [-18.4783, -70.3126], debut: '2026-09-21', fin: '2026-09-24', hotel: 'Chez de la famille',              ancre: '#jour-par-jour', altitude: 0,    climat: { min: 14, max: 20, pluie: 0,  icon: '⛅',  detail: 'doux, voilé sur l\'océan' } }
+  ];
+
+  // ------ Compte à rebours ------
+  function updateCountdown() {
+    const now = new Date();
+    const diffMs = DEPART - now;
+    const days = Math.ceil(diffMs / MS_DAY);
+    const num = document.getElementById('countdown-num');
+    const label = document.getElementById('countdown-label');
+    if (!num || !label) return;
+
+    if (now > RETOUR) {
+      num.textContent = '✦';
+      label.textContent = 'le voyage, déjà un souvenir';
+    } else if (now >= DEPART) {
+      num.textContent = 'On y est';
+      num.style.fontSize = 'clamp(2.5rem, 6vw, 4rem)';
+      label.textContent = 'en plein voyage';
+    } else if (days === 0) {
+      num.textContent = 'Aujourd\'hui';
+      num.style.fontSize = 'clamp(2.5rem, 6vw, 4rem)';
+      label.textContent = 'c\'est le grand jour';
+    } else if (days === 1) {
+      num.textContent = '1';
+      label.textContent = 'jour avant le départ';
+      num.classList.add('urgent');
+    } else {
+      num.textContent = days;
+      label.textContent = 'jours avant le départ';
+      if (days <= 30) num.classList.add('urgent');
+    }
+  }
+
+  // ------ Carte Leaflet ------
+  function initCarte() {
+    if (typeof L === 'undefined') {
+      console.warn('Leaflet pas encore chargé, retry…');
+      setTimeout(initCarte, 200);
+      return;
+    }
+    const el = document.getElementById('carte-leaflet');
+    if (!el) return;
+
+    const map = L.map(el, {
+      scrollWheelZoom: false,
+      zoomControl: true
+    });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 18
+    }).addTo(map);
+
+    const coords = ETAPES.map(e => e.coords);
+
+    L.polyline(coords, {
+      color: '#A85F3D',
+      weight: 3,
+      opacity: 0.75,
+      dashArray: '6, 8',
+      lineCap: 'round'
+    }).addTo(map);
+
+    ETAPES.forEach((etape, i) => {
+      const icon = L.divIcon({
+        className: 'etape-pin-wrap',
+        html: '<div class="etape-pin"><span>' + (i + 1) + '</span></div>',
+        iconSize: [32, 38],
+        iconAnchor: [16, 38],
+        popupAnchor: [0, -36]
+      });
+      const fmtDate = (s) => {
+        const [y, m, d] = s.split('-');
+        const mois = ['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'][parseInt(m,10)-1];
+        return parseInt(d, 10) + ' ' + mois;
+      };
+      const dates = etape.debut === etape.fin
+        ? fmtDate(etape.debut)
+        : fmtDate(etape.debut) + ' → ' + fmtDate(etape.fin);
+      const popupHtml =
+        '<h4>' + etape.nom + '</h4>' +
+        '<div class="popup-dates">' + dates + (etape.altitude ? ' · ' + etape.altitude + ' m' : '') + '</div>' +
+        '<div class="popup-hotel">' + etape.hotel + '</div>' +
+        '<a href="' + etape.ancre + '">Voir le détail jour-par-jour →</a>';
+      L.marker(etape.coords, { icon: icon })
+        .addTo(map)
+        .bindPopup(popupHtml);
+    });
+
+    map.fitBounds(coords, { padding: [40, 40] });
+    setTimeout(() => map.invalidateSize(), 250);
+  }
+
+  // ------ Climat ------
+  const WEATHER_ICONS = {
+    0: '☀️', 1: '🌤️', 2: '⛅', 3: '☁️',
+    45: '🌫️', 48: '🌫️',
+    51: '🌦️', 53: '🌦️', 55: '🌦️',
+    61: '🌧️', 63: '🌧️', 65: '🌧️',
+    71: '🌨️', 73: '🌨️', 75: '❄️', 77: '❄️',
+    80: '🌦️', 81: '🌧️', 82: '⛈️',
+    95: '⛈️', 96: '⛈️', 99: '⛈️'
+  };
+
+  function renderClimatStatic() {
+    const grid = document.getElementById('climat-grid');
+    if (!grid) return;
+    grid.innerHTML = ETAPES.map(e =>
+      '<div class="climat-card">' +
+        '<h3>' + e.nom + '</h3>' +
+        (e.altitude ? '<div class="climat-altitude">' + e.altitude + ' m</div>' : '<div class="climat-altitude">niveau de la mer</div>') +
+        '<div class="climat-icon">' + e.climat.icon + '</div>' +
+        '<div class="climat-temp">' +
+          '<span class="temp-min">' + e.climat.min + '°</span>' +
+          '<span class="temp-sep">/</span>' +
+          '<span class="temp-max">' + e.climat.max + '°</span>' +
+        '</div>' +
+        '<div class="climat-detail">' + e.climat.detail + '</div>' +
+      '</div>'
+    ).join('');
+  }
+
+  async function fetchOpenMeteo() {
+    const sub = document.getElementById('climat-sub');
+    const grid = document.getElementById('climat-grid');
+    if (!grid) return;
+
+    try {
+      const today = new Date();
+      const todayISO = today.toISOString().slice(0, 10);
+      const endDate = new Date(today.getTime() + 13 * MS_DAY).toISOString().slice(0, 10);
+
+      const results = await Promise.all(ETAPES.map(async (etape) => {
+        const start = etape.debut > todayISO ? etape.debut : todayISO;
+        const end = etape.fin < endDate ? etape.fin : endDate;
+        if (start > end) return { etape, data: null };
+        const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + etape.coords[0] +
+                    '&longitude=' + etape.coords[1] +
+                    '&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode' +
+                    '&timezone=auto&start_date=' + start + '&end_date=' + end;
+        const r = await fetch(url);
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const j = await r.json();
+        return { etape, data: j.daily };
+      }));
+
+      grid.innerHTML = results.map(({ etape, data }) => {
+        if (!data || !data.temperature_2m_max || data.temperature_2m_max.length === 0) {
+          return '<div class="climat-card">' +
+            '<h3>' + etape.nom + '</h3>' +
+            (etape.altitude ? '<div class="climat-altitude">' + etape.altitude + ' m</div>' : '<div class="climat-altitude">niveau de la mer</div>') +
+            '<div class="climat-icon">' + etape.climat.icon + '</div>' +
+            '<div class="climat-temp">' +
+              '<span class="temp-min">' + etape.climat.min + '°</span>' +
+              '<span class="temp-sep">/</span>' +
+              '<span class="temp-max">' + etape.climat.max + '°</span>' +
+            '</div>' +
+            '<div class="climat-detail">moyenne septembre</div>' +
+          '</div>';
+        }
+        const min = Math.round(Math.min(...data.temperature_2m_min));
+        const max = Math.round(Math.max(...data.temperature_2m_max));
+        const pluie = data.precipitation_sum.reduce((a, b) => a + b, 0);
+        const codes = data.weathercode || [];
+        const dominantCode = codes.sort((a, b) =>
+          codes.filter(v => v === a).length - codes.filter(v => v === b).length
+        ).pop();
+        const icon = WEATHER_ICONS[dominantCode] || etape.climat.icon;
+        return '<div class="climat-card">' +
+          '<span class="climat-badge">live</span>' +
+          '<h3>' + etape.nom + '</h3>' +
+          (etape.altitude ? '<div class="climat-altitude">' + etape.altitude + ' m</div>' : '<div class="climat-altitude">niveau de la mer</div>') +
+          '<div class="climat-icon">' + icon + '</div>' +
+          '<div class="climat-temp">' +
+            '<span class="temp-min">' + min + '°</span>' +
+            '<span class="temp-sep">/</span>' +
+            '<span class="temp-max">' + max + '°</span>' +
+          '</div>' +
+          '<div class="climat-detail">' + (pluie > 1 ? Math.round(pluie) + ' mm prévus' : 'sec') + '</div>' +
+        '</div>';
+      }).join('');
+
+      if (sub) sub.textContent = 'Prévisions live Open-Meteo pour la fenêtre du voyage. Mise à jour à chaque chargement.';
+    } catch (err) {
+      console.warn('Open-Meteo indisponible, fallback climato:', err);
+      renderClimatStatic();
+    }
+  }
+
+  function initClimat() {
+    const now = new Date();
+    const days = Math.ceil((DEPART - now) / MS_DAY);
+    if (days <= 14 && now <= RETOUR) {
+      fetchOpenMeteo();
+    } else {
+      renderClimatStatic();
+    }
+  }
+
+  // ------ Boot ------
+  function boot() {
+    updateCountdown();
+    setInterval(updateCountdown, 60 * 60 * 1000);
+    initCarte();
+    initClimat();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
+</script>
 
 <footer>
   <p>Ce site se met à jour au fur et à mesure que les choses se précisent.</p>
