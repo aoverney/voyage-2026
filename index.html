@@ -489,6 +489,55 @@
   }
   .jour-contenu .info strong { color: var(--azul-dark); }
 
+  /* Parcours téléphérique détaillé */
+  .telef {
+    margin-top: 1.2rem;
+    border: 1px solid var(--crema-dark);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .telef-titre {
+    background: var(--crema);
+    padding: 0.6rem 1rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--azul-dark);
+  }
+  .telef ol { list-style: none; margin: 0; padding: 0.2rem 1rem 0.6rem; }
+  .telef li {
+    display: flex;
+    gap: 0.9rem;
+    align-items: baseline;
+    padding: 0.6rem 0;
+    border-bottom: 1px dashed var(--crema-dark);
+    font-size: 0.9rem;
+  }
+  .telef li:last-child { border-bottom: none; }
+  .telef .ligne {
+    flex-shrink: 0;
+    width: 88px;
+    text-align: center;
+    padding: 0.18rem 0.4rem;
+    border-radius: 11px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .telef .l-amarilla { background: #E8B923; color: var(--texto); }
+  .telef .l-plateada { background: #6E7B85; }
+  .telef .l-roja { background: var(--rouge); }
+  .telef .l-verde { background: var(--vert); }
+  .telef .l-pied { background: var(--texto-soft); }
+  .telef .station { color: var(--texto); font-weight: 600; }
+  .telef .duree { color: var(--texto-soft); font-weight: 400; }
+  .telef .detail { display: block; color: var(--texto-soft); margin-top: 0.15rem; }
+  @media (max-width: 600px) {
+    .telef li { flex-direction: column; gap: 0.35rem; }
+    .telef .ligne { width: auto; align-self: flex-start; padding: 0.18rem 0.7rem; }
+  }
+
   /* Cards (hôtels & activités) */
   .grid {
     display: grid;
@@ -1340,17 +1389,39 @@
   </details>
 
   <details class="jour">
-    <summary><span class="jour-num">9</span><span class="jour-titre"><span class="date">Dimanche 13 septembre</span>La Paz · Cholitas wrestling 🥊</span></summary>
+    <summary><span class="jour-num">9</span><span class="jour-titre"><span class="date">Dimanche 13 septembre</span>La Paz · Téléphérique et Cholitas wrestling 🥊</span></summary>
     <div class="jour-contenu">
       <ul class="activites">
-        <li><span class="heure">10:00</span>Mi Teleférico (lignes Verde et Roja, vue panoramique sur la cuvette)</li>
-        <li><span class="heure">11:30</span>Plaza Murillo + Catedral + Palais Présidentiel</li>
-        <li><span class="heure">13:00</span>Déjeuner (Popular Cocina Boliviana ou Café del Mundo)</li>
-        <li><span class="heure">15:00</span>Pickup Red Cap Walking Tours pour les Cholitas</li>
-        <li><span class="heure">16:00-19:00</span>Spectacle Cholitas wrestling à El Alto</li>
-        <li><span class="heure">20:30</span>Dîner léger près hôtel</li>
+        <li><span class="heure">09:00</span>Départ du Madero vers la station <strong>Sopocachi</strong> ou <strong>Libertador</strong> (à pied, ou taxi 15 BOB)</li>
+        <li><span class="heure">09:15-11:15</span><strong>Grande boucle en téléphérique</strong> — Sopocachi, El Alto, puis descente dans la cuvette jusqu'au centre. Détail des stations ci-dessous</li>
+        <li><span class="heure">11:30</span>Plaza Murillo · Cathédrale, Palais présidentiel, et l'horloge à l'envers du Congrès</li>
+        <li><span class="heure">12:15</span><strong>Déjeuner tôt</strong> · Mercado Lanza ou salteñas — prochain vrai repas à 20h30, prendre un en-cas</li>
+        <li><span class="heure">13:30</span>Retour Madero · veste chaude, cash, capture d'écran du voucher (pas de wifi sur place)</li>
+        <li><span class="heure">15:15</span>Taxi vers le <strong>Tari Café, Calle Tarija</strong> — il n'y a pas de pickup, ils ne desservent pas Sopocachi</li>
+        <li><span class="heure">15:35</span>Rendez-vous · le guide porte un t-shirt « Cholitas Wrestling LIDER »</li>
+        <li><span class="heure">15:50-19:50</span><strong>Cholitas wrestling</strong> à El Alto · association LIDER, 4 h, guide en espagnol</li>
+        <li><span class="heure">~19:50</span>Fin à <strong>Sagárnaga 173</strong> — pas de retour au point de départ, taxi jusqu'au Madero</li>
+        <li><span class="heure">20:30</span>Dîner</li>
       </ul>
-      <div class="info">Spectacle théâtral haut en couleur, pas un vrai catch, plutôt un mix carnaval-soap-opera. 4 050 m, veste chaude.</div>
+
+      <div class="telef">
+        <div class="telef-titre">🚡 La boucle du matin, station par station</div>
+        <ol>
+          <li><span class="ligne l-pied">à pied</span><span><span class="station">Madero → station Sopocachi ou Libertador</span> <span class="duree">· 5-10 min</span><span class="detail">On part du hub du réseau : Libertador réunit les lignes Amarilla, Verde et Celeste, et la station voisine s'appelle littéralement Sopocachi. Billet 3 BOB, puis 2 BOB par correspondance — <strong>7 BOB par personne</strong> pour toute la boucle, en petites coupures.</span></span></li>
+          <li><span class="ligne l-amarilla">Amarilla</span><span><span class="station">Sopocachi → Mirador</span> <span class="duree">· 17 min, montée</span><span class="detail">On reste jusqu'au terminus. C'est la montée de 3 600 à 4 000 m : elle se fait en dix-sept minutes, donc on y va doucement à la sortie.</span></span></li>
+          <li><span class="ligne l-plateada">Plateada</span><span><span class="station">Mirador → 16 de Julio</span> <span class="duree">· ~10 min, terminus à terminus</span><span class="detail">Correspondance à l'intérieur de la station Mirador, il suffit de suivre le fléchage. Cette ligne traverse tout le rebord d'El Alto.</span></span></li>
+          <li><span class="ligne l-roja">Roja</span><span><span class="station">16 de Julio → Central</span> <span class="duree">· 11 min, descente</span><span class="detail">Deuxième correspondance à 16 de Julio, sens La Paz. C'est <strong>la plus belle descente du réseau</strong> : on plonge dans le canyon avec toute la ville en dessous. On ne descend pas à Cementerio, on va jusqu'au terminus.</span></span></li>
+          <li><span class="ligne l-pied">à pied</span><span><span class="station">Estación Central → Plaza Murillo</span> <span class="duree">· ~10 min</span><span class="detail">On ressort en plein centre historique, à quelques rues du Mercado Lanza pour le déjeuner.</span></span></li>
+        </ol>
+      </div>
+
+      <div class="info">
+        <strong>Dimanche, le téléphérique ouvre à 07:00 et ferme à 21:00</strong> (au lieu de 06:00-23:00 en semaine) — aucun souci pour un départ à 09:00.<br><br>
+        <strong>La Feria du 16 de Julio</strong> se tient juste sous la station où l'on change de ligne, et le dimanche est son jour de pointe : un des plus grands marchés à ciel ouvert d'Amérique du Sud. Ça vaut le coup d'œil depuis les abords de la station — c'est aussi là que la densité de pickpockets est la plus forte de l'agglomération, donc on regarde sans plonger dans les allées, sac devant et téléphone rangé.<br><br>
+        <strong>La ligne Verde est passée au 14/9</strong> : elle ne croise la Roja nulle part, et elle descend vers la Zona Sur — elle sert donc bien mieux comme trajet d'approche vers la Valle de la Luna le lendemain.<br><br>
+        <strong>Deux montées à 4 050 m le même jour</strong>, la boucle du matin et le catch l'après-midi. Si la forme n'y est pas au petit-déjeuner, on inverse sans rien annuler : on prend la <strong>Verde</strong> vers Irpavi à la place, qui descend à 3 200 m — air plus épais, plus chaud, plus vert — et on garde El Alto uniquement pour l'après-midi.<br><br>
+        Le spectacle est théâtral et haut en couleur, pas un vrai catch : plutôt un mix carnaval-soap-opera. L'opérateur recommande lui-même <strong>le 2<sup>e</sup> rang ou plus en arrière</strong> — le premier reçoit l'eau, le pop-corn et les bouteilles lancées par le public. À demander en arrivant. Veste chaude, et un taxi à prévoir pour le retour depuis Sagárnaga.
+      </div>
     </div>
   </details>
 
@@ -1362,7 +1433,7 @@
         <li><span class="heure">11:30</span>Iglesia San Francisco + musée + toit</li>
         <li><span class="heure">13:00</span>Déjeuner</li>
         <li><span class="heure">14:30</span>Sieste / repos</li>
-        <li><span class="heure">16:00</span>Valle de la Luna (taxi 30 min, balade facile)</li>
+        <li><span class="heure">16:00</span>Valle de la Luna · <strong>téléphérique ligne Verde</strong> depuis Libertador jusqu'au terminus Irpavi (16 min, vue sur la Zona Sur), puis taxi ~15 min. Balade facile sur place</li>
         <li><span class="heure">soir</span>Dîner Sopocachi · nuit Madero</li>
       </ul>
     </div>
@@ -1560,8 +1631,7 @@
       <img class="card-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cholita_wrestling4_bolivia_Joel_Alvarez-2.jpg/1280px-Cholita_wrestling4_bolivia_Joel_Alvarez-2.jpg" alt="Cholitas luchadoras" loading="lazy">
       <div class="ville">13 septembre · La Paz</div>
       <h3>Cholitas wrestling 🥊</h3>
-      <p class="description">Spectacle de catch théâtral à El Alto, dimanche après-midi. Pickup hôtel inclus.</p>
-      <a class="btn" href="https://redcapwalkingtours.com/tours/cholita-wrestling/" target="_blank" rel="noopener">Red Cap Tours</a>
+      <p class="description">Spectacle de catch théâtral à El Alto, dimanche après-midi, avec l'association <strong>LIDER</strong>. Réservé et payé. Rendez-vous 15h35 au Tari Café, Calle Tarija — <strong>pas de pickup à l'hôtel</strong>, et le tour se termine à Sagárnaga 173, pas au point de départ.</p>
     </article>
 
     <article class="card">
@@ -1909,10 +1979,10 @@
         <td class="montant">0 – 420</td>
       </tr>
       <tr>
-        <td>Cholitas wrestling Red Cap</td>
-        <td>13/9 · 4 pax · ~25-30 USD/pers · pickup El Alto inclus</td>
-        <td>⚪ TODO</td>
-        <td class="montant">~100–130</td>
+        <td>Cholitas wrestling · association LIDER</td>
+        <td>13/9 · 4 pax · General Admission · réservé via GetYourGuide le 14/8 (réf GYG83W9WHLZ4) · annulation gratuite jusqu'au 12/9</td>
+        <td>✔ Réservé et payé</td>
+        <td class="montant">75</td>
       </tr>
       <tr>
         <td>Matinée du 20/9 · Baltinache ou Vallée de la Lune</td>
@@ -1922,13 +1992,13 @@
       </tr>
       <tr class="total">
         <td colspan="3">Sous-total activités (confirmé + estimations) · fourchette basse = sans le survol de Nazca</td>
-        <td class="montant">~4 480 – 4 990</td>
+        <td class="montant">~4 455 – 4 935</td>
       </tr>
     </tbody>
   </table>
 
   <div class="budget-recap">
-    <strong>Estimation globale ~7 950 à 8 450 CHF dans le tableau</strong> (l'écart tient au survol de Nazca, encore en suspens), plus environ <strong>1 200–2 000 CHF pour les repas et la marge imprévus</strong> (les petits-déj sont inclus dans la plupart des hôtels, le tour Joker couvre tous les repas pendant 3 jours, et les 3 jours à Arica sont quasi-gratuits chez le grand-papa d'Arnaud). Cible réaliste totale : <strong>~9 600 CHF pour le groupe</strong>, soit <strong>~2 400 CHF/personne</strong>.
+    <strong>Estimation globale ~7 925 à 8 395 CHF dans le tableau</strong> (l'écart tient au survol de Nazca, encore en suspens), plus environ <strong>1 200–2 000 CHF pour les repas et la marge imprévus</strong> (les petits-déj sont inclus dans la plupart des hôtels, le tour Joker couvre tous les repas pendant 3 jours, et les 3 jours à Arica sont quasi-gratuits chez le grand-papa d'Arnaud). Cible réaliste totale : <strong>~9 600 CHF pour le groupe</strong>, soit <strong>~2 400 CHF/personne</strong>.
   </div>
 
   <div class="budget-recap" style="border-left-color: var(--vert); background: rgba(91, 122, 58, 0.08); margin-top: 1rem;">
@@ -1938,7 +2008,7 @@
 
 <section id="taches">
   <h2>Avancement · ce qui est fait, ce qui reste</h2>
-  <p class="section-sub">Mise à jour au fil des sessions de préparation · dernier point le <strong>13 août 2026</strong>, à trois semaines du départ.</p>
+  <p class="section-sub">Mise à jour au fil des sessions de préparation · dernier point le <strong>17 août 2026</strong>, à moins de trois semaines du départ.</p>
 
   <div class="tasks">
     <div class="tasks-col fait">
@@ -1951,7 +2021,7 @@
         <li>Vols intercontinentaux Madrid ↔ Lima réservés (IB6660 et IB0124)</li>
         <li>8 hôtels Booking shortlistés et confirmés sur la base 2 voyageurs (1 270 CHF total avec petits-déj)</li>
         <li>Compagnies de bus validées (Cruz del Sur, Todo Turismo, Frontera del Norte)</li>
-        <li>Activités identifiées (survol de Nazca, Red Cap, SPACE Obs, matinée désert San Pedro)</li>
+        <li>Activités identifiées (survol de Nazca, Cholitas wrestling, SPACE Obs, matinée désert San Pedro)</li>
         <li><strong>Devis Joker Expedition reçu pour 4</strong> · 4 380 USD au total optimisé (1 095/pers, -19 % vs 2 pax) · 2×4×4 privés · guide francophone · Luna Salada + Tayka del Desierto</li>
         <li><strong>Acompte Joker payé</strong> · 50 % = 2 190 USD via WeTravel le 6/5 (1 850.11 CHF débités sur Mastercard UBS) · place officiellement bloquée pour le 16-18 septembre</li>
         <li><strong>6 hôtels recontactés pour la chambre additionnelle de Nina &amp; David</strong> · 4 par chat Booking (Madero, Palla, Holiday Inn, Jardín Atacama) · 1 par email à la centrale (Casa Andina Nasca) · 1 en cours d'échange (Monasterio Cusco)</li>
@@ -1975,6 +2045,7 @@
         <li><strong>Bus San Pedro → Arica réservé</strong> (8/8) · Frontera del Norte <strong>Salón Cama</strong> le 20/9, départ 20h20 du Terminal de San Pedro → arrivée Arica <strong>~8h00</strong> le 21/9 · 4 sièges (49, 50, 52, 53) · 123 600 CLP payés, billets dans le Drive. <strong>Les quatre transports terrestres du voyage sont désormais bouclés.</strong></li>
         <li><strong>Préparatifs matériels bouclés</strong> (13/8) · <strong>van privé Green Lima prépayé</strong> pour l'arrivée du 5/9 (S/ 120, chauffeur à la Puerta 3) · <strong>change USD fait</strong> en billets neufs de 20 et 50 · pharmacie de voyage complète (Diamox, antibio préventif, anti-nausée, solaire haute protection) · cadeau de grand-papa choisi avec mamie</li>
         <li><strong>Vols domestiques de Nina &amp; David consolidés</strong> · codes de réservation et sièges des 3 vols récupérés</li>
+        <li><strong>Cholitas wrestling réservé et payé</strong> (14/8) · 4 places General Admission avec l'association <strong>LIDER</strong> le dimanche 13/9, 75 CHF pour les quatre (18.75/pers), annulation gratuite jusqu'au 12/9 · <strong>attention, pas de pickup à l'hôtel</strong> : rendez-vous à 15h35 au Tari Café (Calle Tarija) et fin du tour à Sagárnaga 173 vers 19h50, retour en taxi</li>
         <li><strong>Tour du Salar intégralement payé</strong> (12/8) · solde de 2 190 USD réglé via WeTravel, facture corrigée en USD au dossier · et <strong>pickup du 16/9 confirmé</strong> par José : son équipe attend au bureau Todo Turismo d'Uyuni (Av. Cabrera 158) vers 7h30, plus au terminal · passeports des 4 transmis pour le registre</li>
       </ul>
     </div>
@@ -1996,7 +2067,6 @@
       <ul>
         <li><strong>Restrictions alimentaires pour Joker</strong> · José les demande à l'avance pour les repas du tour — à lui transmettre dans la foulée du paiement</li>
         <li><strong>Survol de Nazca</strong> · ⏸ <strong>ne rien réserver avant fin août</strong> · suivre l'enquête et les décisions du ministère péruvien, puis trancher en groupe. Si le vol se fait : en direct avec une compagnie choisie et vérifiée, jamais via une plateforme de revente, et 5 sièges à bloquer (4 + le siège additionnel)</li>
-        <li>Réserver les Cholitas Red Cap (4 personnes) · fin août</li>
         <li>Caler la matinée du 20/9 dès le vote du groupe : chauffeur privé via le Jardín Atacama (+ entrées Baltinache le cas échéant)</li>
         <li><strong>eSIM Amérique du Sud</strong> (Airalo ou équivalent, couvre PE / BO / CL) pour les 4 · à activer la veille du départ</li>
         <li>Photocopies des 4 passeports + police d'assurance dans une pochette séparée</li>
